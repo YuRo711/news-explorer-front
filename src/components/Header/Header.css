@@ -1,0 +1,56 @@
+.header {
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  padding: 0 104px;
+  box-sizing: border-box;
+  align-items: center;
+  box-shadow: 0 1px rgba(255, 255, 255, 0.2);
+  color: #FFF;
+}
+
+.header__title {
+  font-family: 'RobotoSlab', Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header__nav {
+  margin-left: auto;
+}
+
+.header__link {
+  text-decoration: none;
+}
+
+.header__link-button {
+  height: 80px;
+  padding: 0 10px;
+  border-bottom: solid 3px #FFF;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #FFF;
+  margin: 0;
+}
+
+.header__button {
+  margin-left: 34px;
+  width: 176px;
+  height: 48px;
+  border: solid 1px #FFF;
+  border-radius: 24px;
+  background: none;
+  font-family: 'Roboto', Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #FFF;
+  cursor: pointer;
+}
