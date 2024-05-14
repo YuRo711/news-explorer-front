@@ -12,10 +12,11 @@ function App(props) {
 
   function getNews(query) {
     if (query) {
+      setIsSearching(true);
       api.getNews(query)
         .then((json) => {
-          setIsSearching(true);
           setNews(json["articles"]);
+          setIsSearching(false);
           console.log(json["articles"]);
         });
     }

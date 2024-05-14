@@ -15,8 +15,12 @@
     justify-content: center;
 }
 
-.news_loading {
+.news_result_loading {
     height: 282px;
+}
+
+.news_result_none {
+    height: 374px;
 }
 
 .news__loading-text {
@@ -26,6 +30,7 @@
     font-weight: 400;
     line-height: 24px;
     color: #B6BCBF;
+    text-align: center;
 }
 
 .news__loading-icon {
@@ -34,3 +39,22 @@
     animation-duration: 5s;
     animation-timing-function: linear;
 }
+
+.news__not-found-title {
+    font-family: 'RobotoSlab';
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 30px;
+    margin: 32px 0 0;
+}
+
+.news__not-found-text {
+    font-family: 'Roboto';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #B6BCBF;
+    max-width: 240px;
+    text-align: center;
+}
+
