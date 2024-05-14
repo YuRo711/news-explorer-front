@@ -11,11 +11,14 @@ function App(props) {
   //#region Methods
 
   function getNews(query) {
-    api.getNews(query)
-      .then((json) => {
-        setNews(json["articles"]);
-        console.log(json["articles"]);
-      })
+    if (query) {
+      api.getNews(query)
+        .then((json) => {
+          setIsSearching(true);
+          setNews(json["articles"]);
+          console.log(json["articles"]);
+        });
+    }
   }
 
   //#endregion
@@ -23,8 +26,9 @@ function App(props) {
   
   //#region Variables setup
 
-  const [isLoggedIn, setIdLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [news, setNews] = useState(null);
+  const [isSearching, setIsSearching] = useState(false);
 
   //#endregion
 
@@ -43,6 +47,8 @@ function App(props) {
         <Route path="/" element={
           <Main
             getNews={getNews}
+            news={news}
+            isSearching={isSearching}
           />
         }/>
         <Route path="*" element={
