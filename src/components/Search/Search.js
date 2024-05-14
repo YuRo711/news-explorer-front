@@ -12,7 +12,13 @@ function Search(props) {
           in your personal account.
         </h2>
         <div className="search__bar">
-          
+          <input type="text"
+            className="search__input"
+            placeholder="Enter topic"
+          />
+          <button type="button" className="search__button">
+            Search
+          </button>
         </div>
       </section>
     );
