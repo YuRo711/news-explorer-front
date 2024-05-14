@@ -7,7 +7,6 @@ function Header(props) {
   const { isLoggedIn } = props;
   const path = useLocation().pathname;
   const isOnMain = path === "/";
-  console.log(isOnMain);
 
   return (
     <header className={"header" + (isOnMain ? " header_page_main" : "")}>

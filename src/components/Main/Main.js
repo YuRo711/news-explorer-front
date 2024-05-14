@@ -5,7 +5,9 @@ import Search from "../Search/Search";
 function Main(props) {
   return (
     <main className="main">
-      <Search />
+      <Search 
+        getNews={props.getNews}
+      />
       <Author />
     </main>
   );

@@ -3,17 +3,28 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Saved from "../Saved/Saved";
+import { api } from "../../utils/newsApi.js";
 
 function App(props) {
   //#region Methods
 
+  function getNews(query) {
+    api.getNews(query)
+      .then((json) => {
+        setNews(json["articles"]);
+        console.log(json["articles"]);
+      })
+  }
+
   //#endregion
 
+  
   //#region Variables setup
 
   const [isLoggedIn, setIdLoggedIn] = useState(true);
+  const [news, setNews] = useState(null);
 
   //#endregion
 
@@ -30,7 +41,9 @@ function App(props) {
           <Saved/>
         }/>
         <Route path="/" element={
-          <Main/>
+          <Main
+            getNews={getNews}
+          />
         }/>
         <Route path="*" element={
           <Navigate to="/" replace/>
