@@ -1,0 +1,31 @@
+.author {
+    display: flex;
+    padding: 80px 104px;
+    gap: 56px;
+}
+
+.author__image {
+    border-radius: 50%;
+    width: 464px;
+    height: 464px;
+    background-image: url('../../images/author.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.author__title {
+    font-family: 'RobotoSlab';
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 46px;
+    margin: 51px 0 0;
+}
+
+.author__text {
+    margin: 24px 0 0;
+    font-family: 'Roboto';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    max-width: 600px;
+}
