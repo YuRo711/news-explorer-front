@@ -14,6 +14,7 @@ function CardsSection(props) {
                 key={i}
                 data={article}
                 isLoggedIn={props.isLoggedIn}
+                handleSave={props.handleSave}
               />
             ))
         }

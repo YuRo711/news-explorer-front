@@ -22,12 +22,16 @@ function App(props) {
     }
   }
 
+  function handleSave(event, cardData) {
+    event.stopPropagation();
+  }
+
   //#endregion
 
   
   //#region Variables setup
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [news, setNews] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
 
@@ -51,6 +55,7 @@ function App(props) {
             news={news}
             isSearching={isSearching}
             isLoggedIn={isLoggedIn}
+            handleSave={handleSave}
           />
         }/>
         <Route path="*" element={

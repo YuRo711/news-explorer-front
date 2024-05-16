@@ -12,6 +12,7 @@ function Main(props) {
         news={props.news}
         isSearching={props.isSearching}
         isLoggedIn={props.isLoggedIn}
+        handleSave={props.handleSave}
       />
       <Author />
     </main>

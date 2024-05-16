@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./ArticleCard.css";
 
 function ArticleCard(props) {
@@ -19,14 +20,37 @@ function ArticleCard(props) {
       splitAuthor[0] : author;
   }
 
+  function showSuggestion() {
+    if (!props.isLoggedIn) {
+      setSuggestionVisible(true);
+    }
+  }
+
+  function hideSuggestion() {
+    setSuggestionVisible(false);
+  }
+
 
   const { data } = props;
   const publishedAt = formatDate(new Date(data.publishedAt));
   const author = formatAuthor(data.author);
+  const [suggestionVisible, setSuggestionVisible] = useState(false);
 
   return (
     <a className="card" href={data.url}>
+      <button className="card__save-button"
+        type="button"
+        onMouseEnter={showSuggestion}
+        onMouseLeave={hideSuggestion}
+        onClick={(e) => props.handleSave(e, data)}
+      />
+      <div className={suggestionVisible ? 
+        "card__suggestion card__suggestion_visible" : "card__suggestion"}>
+        Sign in to save articles
+      </div>
+
       <img className="card__image" src={data.urlToImage}/>
+
       <div className="card__info">
         <p className="card__date">{publishedAt}</p>
         <h3 className="card__title">{data.title}</h3>
