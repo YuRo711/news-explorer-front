@@ -11,6 +11,7 @@ function Main(props) {
       <News
         news={props.news}
         isSearching={props.isSearching}
+        isLoggedIn={props.isLoggedIn}
       />
       <Author />
     </main>

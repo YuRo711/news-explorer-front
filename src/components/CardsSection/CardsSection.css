@@ -1,0 +1,18 @@
+.cards {
+  padding: 80px 102px;
+}
+
+.cards__title {
+  font-family: 'RobotoSlab';
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  margin: 0;
+}
+
+.cards__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 64px 0 0;
+}

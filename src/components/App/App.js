@@ -50,6 +50,7 @@ function App(props) {
             getNews={getNews}
             news={news}
             isSearching={isSearching}
+            isLoggedIn={isLoggedIn}
           />
         }/>
         <Route path="*" element={

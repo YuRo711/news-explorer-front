@@ -1,6 +1,7 @@
 import "./News.css";
 import loadingIcon from "../../images/loading.png";
 import notFoundIcon from "../../images/not-found_v1.svg";
+import CardsSection from "../CardsSection/CardsSection";
 
 function News(props) {
   if (!props.isSearching && !props.news) {
@@ -28,6 +29,9 @@ function News(props) {
 
   return (
     <section className="news">
+      <CardsSection
+        news={props.news}
+      />
     </section>
   );
 }

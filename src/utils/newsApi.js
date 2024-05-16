@@ -2,7 +2,8 @@ import { apiKey } from "./constants";
 
 class newsApi {
   constructor() {
-    this.newsBaseUrl = "https://nomoreparties.co/news/v2/everything?";
+    this.newsBaseUrl = 
+      "https://nomoreparties.co/news/v2/everything?language=en&";
   }
   
   async getNews(query) {
