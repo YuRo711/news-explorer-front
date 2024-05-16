@@ -2,6 +2,12 @@ import { useState } from "react";
 import "./Search.css";
 
 function Search(props) {
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      props.getNews(query);
+    }
+  }
+
   const [query, setQuery] = useState("");
 
   return (
@@ -18,7 +24,8 @@ function Search(props) {
         <input type="text"
           className="search__input"
           placeholder="Enter topic"
-          onChange={(e) => {setQuery(e.target.value)}}
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e)}
         />
         <button type="button" className="search__button"
           onClick={() => props.getNews(query)}
