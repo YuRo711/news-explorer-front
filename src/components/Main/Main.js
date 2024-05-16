@@ -13,6 +13,7 @@ function Main(props) {
         isSearching={props.isSearching}
         isLoggedIn={props.isLoggedIn}
         handleSave={props.handleSave}
+        handleArticleClick={props.handleArticleClick}
       />
       <Author />
     </main>

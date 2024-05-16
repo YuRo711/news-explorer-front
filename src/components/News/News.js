@@ -31,6 +31,8 @@ function News(props) {
     <section className="news">
       <CardsSection
         news={props.news}
+        handleSave={props.handleSave}
+        handleArticleClick={props.handleArticleClick}
       />
     </section>
   );

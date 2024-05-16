@@ -15,6 +15,7 @@ function CardsSection(props) {
                 data={article}
                 isLoggedIn={props.isLoggedIn}
                 handleSave={props.handleSave}
+                handleArticleClick={props.handleArticleClick}
               />
             ))
         }

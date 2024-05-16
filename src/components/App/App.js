@@ -26,6 +26,10 @@ function App(props) {
     event.stopPropagation();
   }
 
+  function handleArticleClick(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+
   //#endregion
 
   
@@ -56,6 +60,7 @@ function App(props) {
             isSearching={isSearching}
             isLoggedIn={isLoggedIn}
             handleSave={handleSave}
+            handleArticleClick={handleArticleClick}
           />
         }/>
         <Route path="*" element={

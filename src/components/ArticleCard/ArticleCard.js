@@ -37,7 +37,9 @@ function ArticleCard(props) {
   const [suggestionVisible, setSuggestionVisible] = useState(false);
 
   return (
-    <a className="card" href={data.url}>
+    <div className="card"
+      onClick={() => props.handleArticleClick(data.url)}
+    >
       <button className="card__save-button"
         type="button"
         onMouseEnter={showSuggestion}
@@ -57,7 +59,7 @@ function ArticleCard(props) {
         <p className="card__description">{data.description}</p>
         <h3 className="card__author">{author}</h3>
       </div>
-    </a>
+    </div>
   );
 }
 
