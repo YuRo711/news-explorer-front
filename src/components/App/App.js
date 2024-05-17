@@ -6,6 +6,9 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Saved from "../Saved/Saved";
 import { api } from "../../utils/newsApi.js";
+import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
+import SuccessModal from "../Modals/SuccessModal/SuccessModal.js";
+import LoginModal from "../Modals/LoginModal/LoginModal.js";
 
 function App(props) {
   //#region Methods
@@ -17,7 +20,6 @@ function App(props) {
         .then((json) => {
           setNews(json["articles"]);
           setIsSearching(false);
-          console.log(json["articles"]);
         });
     }
   }
@@ -30,6 +32,19 @@ function App(props) {
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 
+  function handleModalClose(modalId) {
+    setModalsActivity({...modalsActivity, [modalId]: false});
+  }
+
+  function handleModalOpen(modalId) {
+    setModalsActivity({...modalsActivity, [modalId]: true});
+  }
+
+  function openAnotherModal(modalId, newModalId) {
+    setModalsActivity({...modalsActivity, 
+      [modalId]: false, [newModalId]: true});
+  }
+
   //#endregion
 
   
@@ -38,6 +53,11 @@ function App(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [news, setNews] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
+  const [modalsActivity, setModalsActivity] = useState({
+    "signup": true,
+    "login": false,
+    "success": false,
+  });
 
   //#endregion
 
@@ -48,6 +68,7 @@ function App(props) {
     <div className="page">
       <Header
         isLoggedIn={isLoggedIn}
+        openLoginModal={() => handleModalOpen("login")}
       />
       <Routes>
         <Route path="/saved" element={
@@ -68,6 +89,23 @@ function App(props) {
         }/>
       </Routes>
       <Footer/>
+      <RegisterModal
+        name="signup"
+        onClose={handleModalClose}
+        isOpen={modalsActivity["signup"]}
+      />
+      <SuccessModal
+        name="success"
+        onClose={handleModalClose}
+        isOpen={modalsActivity["success"]}
+        openAnotherModal={() => openAnotherModal("success", "login")}
+      />
+      <LoginModal
+        name="login"
+        onClose={handleModalClose}
+        isOpen={modalsActivity["login"]}
+        openAnotherModal={() => openAnotherModal("login", "signup")}
+      />
     </div>
   );
 

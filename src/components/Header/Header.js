@@ -46,7 +46,9 @@ function Header(props) {
           </button>
         :
           <button type="button"
-            className={"header__button header__button_page_main header__button_type_login"}>
+            className={"header__button header__button_page_main header__button_type_login"}
+            onClick={props.openLoginModal}
+          >
               Sign in
           </button>
       }

@@ -31,3 +31,8 @@
     font-family: 'SourceSans';
     src: url('./fonts/SourceSans3-VariableFont_wght.ttf');
 }
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./fonts/Inter-VariableFont_slnt\,wght.ttf');
+}

@@ -7,7 +7,6 @@ function CardsSection(props) {
     setIsExpanded(true);
   }
 
-
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
