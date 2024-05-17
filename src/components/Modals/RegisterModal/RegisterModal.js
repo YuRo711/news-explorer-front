@@ -9,6 +9,7 @@ function RegisterModal(props) {
       altText="Sign in"
       title="Sign up"
       buttonText="Sign up"
+      openAnotherModal={props.openAnotherModal}
     >
       <label className="modal__label"><p className="modal__label-text">Email</p>
         <input className="modal__input"

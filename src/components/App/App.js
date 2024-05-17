@@ -54,7 +54,7 @@ function App(props) {
   const [news, setNews] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
   const [modalsActivity, setModalsActivity] = useState({
-    "signup": true,
+    "signup": false,
     "login": false,
     "success": false,
   });
@@ -93,6 +93,7 @@ function App(props) {
         name="signup"
         onClose={handleModalClose}
         isOpen={modalsActivity["signup"]}
+        openAnotherModal={() => openAnotherModal("signup", "login")}
       />
       <SuccessModal
         name="success"
