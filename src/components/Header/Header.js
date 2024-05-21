@@ -68,6 +68,7 @@ function Header(props) {
           isLoggedIn={isLoggedIn}
           isMenuOpen={isMenuOpen}
           setMenuOpen={setMenuOpen}
+          openLoginModal={props.openLoginModal}
         />
         : ""
       }

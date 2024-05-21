@@ -4,6 +4,12 @@ import "./MobileMenu.css";
 import { useState } from "react";
 
 function MobileMenu(props) {
+
+  function openLoginModal() {
+    props.setMenuOpen(false)
+    props.openLoginModal();
+  }
+
   const { isLoggedIn } = props;
 
   return (
@@ -41,7 +47,7 @@ function MobileMenu(props) {
               :
                 <button type="button"
                   className="menu__button"
-                  onClick={props.openLoginModal}
+                  onClick={openLoginModal}
                 >
                     Sign in
                 </button>

@@ -156,3 +156,21 @@
         padding: 24px 36px;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .modal {
+        align-items: flex-end;
+    }
+
+    .modal__container {
+        width: 100vw;
+        height: calc(100vh - 56px);
+        padding: 16px 17px;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .modal__close-button {
+        left: auto;
+        right: 16px;
+    }
+}
