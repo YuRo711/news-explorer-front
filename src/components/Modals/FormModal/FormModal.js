@@ -8,11 +8,15 @@ function FormModal(props) {
       isOpen={props.isOpen}
     >
       <h2 className="modal__title">{props.title}</h2>
-      <form className="modal__form">
+      <form className="modal__form" ref={props.formRef}>
         
         {props.children}
 
-        <button className="modal__submit-button">{props.buttonText}</button>
+        <button className="modal__submit-button"
+          disabled={!props.isButtonActive}
+        >
+          {props.buttonText}
+        </button>
 
         <p className="modal__alt">
             or <span className="modal__link" onClick={props.openAnotherModal}>

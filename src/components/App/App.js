@@ -1,14 +1,15 @@
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useFormAction } from "react-router-dom";
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Saved from "../Saved/Saved";
 import { api } from "../../utils/newsApi.js";
 import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
 import SuccessModal from "../Modals/SuccessModal/SuccessModal.js";
 import LoginModal from "../Modals/LoginModal/LoginModal.js";
+import { formValidator } from "../../utils/formValidator.js";
 
 function App(props) {
   //#region Methods
@@ -45,6 +46,10 @@ function App(props) {
       [modalId]: false, [newModalId]: true});
   }
 
+  function handleFormActivity(formName) {
+    setModalsActivity({...formActivity, [formName]: true});
+  }
+
   //#endregion
 
   
@@ -54,7 +59,7 @@ function App(props) {
   const [news, setNews] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
   const [modalsActivity, setModalsActivity] = useState({
-    "signup": false,
+    "signup": true,
     "login": false,
     "success": false,
   });

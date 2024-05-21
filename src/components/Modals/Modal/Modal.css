@@ -96,6 +96,13 @@
     background-color: #2A65CC;
 }
 
+.modal__submit-button:disabled {
+    box-shadow: none;
+    background-color: #E6E8EB;
+    color: #B6BCBF;
+    cursor: auto;
+}
+
 .modal__label {
     width: 100%;
     margin: 30px 0 0;
