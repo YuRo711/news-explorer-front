@@ -36,3 +36,26 @@
 .cards__expand-button:hover {
   background-color: #E8E8E8;
 }
+
+
+@media screen and (min-width: 600px) and (max-width: 1300px) {
+  .cards {
+    padding: 40px 0;
+  }
+
+  .cards__title {
+    font-size: 30px;
+    line-height: 34px;
+  }
+
+  .cards__grid {
+    gap: 8px;
+    margin: 32px 0 0;
+  }
+
+  .cards__expand-button {
+    width: 240px;
+    height: 56px;
+    margin: 32px auto 0;
+  }
+}

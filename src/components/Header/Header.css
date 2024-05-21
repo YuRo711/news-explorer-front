@@ -95,8 +95,25 @@
 }
 
 
-@media screen and (min-width: 800px) and (max-width: 1300px) {
+@media screen and (min-width: 600px) and (max-width: 1300px) {
   .header {
     padding: 0 40px;
+    height: 66px;
+  }
+
+  .header__link-button {
+    font-size: 16px;
+    height: 66px;
+  }
+  
+  .header__button {
+    margin-left: 28px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+
+  .header__button_type_login {
+    width: 152px;
   }
 }
