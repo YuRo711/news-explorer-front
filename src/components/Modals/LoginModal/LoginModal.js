@@ -42,6 +42,7 @@ function LoginModal(props) {
           onChange={toggleButtonState}
           required
         />
+        <p className="modal__error" id="email-error"></p>
       </label>
 
       <label className="modal__label"><p className="modal__label-text">Password</p>
@@ -52,6 +53,7 @@ function LoginModal(props) {
           onChange={toggleButtonState}
           required
         />
+        <p className="modal__error" id="password-error"></p>
       </label>
     </FormModal>
   );

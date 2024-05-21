@@ -15,9 +15,23 @@ export class formValidator {
     }
 
     _showInputError(inputElement, errorMessage) {
+        const errorElement = this._formElement
+            .querySelector(`#${inputElement.id}-error`);
+        errorElement.textContent = errorMessage;
     }
 
     _hideInputError(inputElement) {
+        const errorElement = this._formElement
+            .querySelector(`#${inputElement.id}-error`);
+        errorElement.textContent = "";
+    }
+
+    _validateInput(inputElement) {
+        if (inputElement.validity.valid) {
+            this._hideInputError(inputElement);
+        } else {
+            this._showInputError(inputElement, inputElement.validationMessage);
+        }
     }
 
     enableValidation() {
@@ -30,5 +44,6 @@ export class formValidator {
         } else {
             this._setButtonActivity(true);
         }
+        this._inputFields.forEach((inputElement) => this._validateInput(inputElement));
     }
 }

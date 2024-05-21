@@ -84,7 +84,7 @@
     border: none;
     border-radius: 32px;
     box-shadow: 0 5px 15px #0E1A3933;
-    margin: 40px 0 0;
+    margin: 24px 0 0;
     cursor: pointer;
 }
 
@@ -105,7 +105,7 @@
 
 .modal__label {
     width: 100%;
-    margin: 30px 0 0;
+    margin: 13px 0 0;
 }
 
 .modal__label:first-child {
@@ -139,4 +139,13 @@
 .modal__input::placeholder {
     color: #000;
     opacity: 20%;
+}
+
+.modal__error {
+    margin: 3px 0 0;
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 400;
+    color: #F00;
+    height: 14px;
 }

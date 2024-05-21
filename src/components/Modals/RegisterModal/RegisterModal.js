@@ -42,6 +42,7 @@ function RegisterModal(props) {
           onChange={toggleButtonState}
           required
         />
+        <p className="modal__error" id="email-error"></p>
       </label>
 
       <label className="modal__label"><p className="modal__label-text">Password</p>
@@ -52,6 +53,7 @@ function RegisterModal(props) {
           onChange={toggleButtonState}
           required
         />
+        <p className="modal__error" id="password-error"></p>
       </label>
 
       <label className="modal__label"><p className="modal__label-text">Username</p>
@@ -62,6 +64,7 @@ function RegisterModal(props) {
           onChange={toggleButtonState}
           required
         />
+        <p className="modal__error" id="username-error"></p>
       </label>
     </FormModal>
   );
