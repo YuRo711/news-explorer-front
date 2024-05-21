@@ -30,7 +30,7 @@
     margin: 0;
 }
 
-.seatch__subtitle {
+.search__subtitle {
     font-family: 'Roboto';
     font-size: 18px;
     font-weight: 400;
@@ -95,4 +95,43 @@
 
 .search__button:active {
     background-color: #2A65CC;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1300px) {
+    .search {
+        padding-top: 104px;
+        height: 400px;
+    }
+
+    .search__image {
+        height: 400px;
+    }
+
+    .search__title {
+        font-size: 36px;
+        line-height: 40px;
+        max-width: 452px;
+    }
+
+    .search__subtitle {
+        color: #FFF;
+        max-width: 452px;
+        margin: 16px 0 0;
+    }
+
+    .search__bar {
+        margin-top: 48px;
+        width: 452px;
+        height: 56px;
+        border-radius: 32px;
+    }
+
+    .search__input {
+        width: 272px;
+    }
+
+    .search__button {
+        width: 160px;
+        height: 56px;
+    }
 }

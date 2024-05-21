@@ -60,7 +60,7 @@ function App(props) {
   const [isSearching, setIsSearching] = useState(false);
   const [modalsActivity, setModalsActivity] = useState({
     "signup": false,
-    "login": true,
+    "login": false,
     "success": false,
   });
 

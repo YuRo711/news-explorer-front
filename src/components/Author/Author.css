@@ -29,3 +29,27 @@
     line-height: 24px;
     max-width: 600px;
 }
+
+
+@media screen and (min-width: 600px) and (max-width: 1300px) {
+    .author {
+        gap: 32px;
+        padding: 40px;
+    }
+    
+    .author__image {
+        width: 232px;
+        height: 232px;
+    }
+
+    .author__title {
+        font-size: 30px;
+        line-height: 40px;
+        margin: 0;
+    }
+
+    .author__text {
+        margin: 16px 0 0;
+        max-width: 424px;
+    }
+}
