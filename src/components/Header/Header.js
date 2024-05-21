@@ -10,7 +10,7 @@ function Header(props) {
   const path = useLocation().pathname;
   const isOnMain = path === "/";
   const isOnMobile = window.innerWidth < 600;
-  const [isMenuOpen, setMenuOpen] = useState(true);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className={"header" + (isOnMain ? " header_page_main" : "")}>
