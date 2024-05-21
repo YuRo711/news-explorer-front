@@ -94,6 +94,16 @@
   margin-left: auto;
 }
 
+.header__menu-button {
+  background: none;
+  background-image: url('../../images/menu.svg');
+  border: none;
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
 
 @media screen and (min-width: 600px) and (max-width: 1300px) {
   .header {
@@ -115,5 +125,17 @@
 
   .header__button_type_login {
     width: 152px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .header__title {
+    font-size: 16px;
+    line-height: 24px;
   }
 }
