@@ -61,6 +61,7 @@
     font-weight: 400;
     line-height: 22px;
     caret-color: #2F71E5;
+    box-shadow: 0 5px 15px #0E1A3933;
 }
 
 .search__input:focus {
@@ -133,5 +134,49 @@
     .search__button {
         width: 160px;
         height: 56px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .search {
+        padding-top: 86px;
+        padding-bottom: 24px;
+        height: 536px;
+    }
+
+    .search__image {
+        height: 536px;
+    }
+
+    .search__title {
+        font-size: 36px;
+        line-height: 40px;
+        max-width: 285px;
+    }
+
+    .search__subtitle {
+        color: #FFF;
+        max-width: 285px;
+        margin: 16px 0 0;
+    }
+
+    .search__bar {
+        margin-top: auto;
+        width: 288px;
+        height: 56px;
+        border-radius: 32px;
+    }
+
+    .search__input {
+        width: 288px;
+    }
+
+    .search__button {
+        width: 288px;
+        height: 56px;
+        box-shadow: 0 5px 15px #0E1A3933;
+        top: 0;
+        right: 0;
+        margin: 16px 0 0;
     }
 }

@@ -9,6 +9,7 @@ function Search(props) {
   }
 
   const [query, setQuery] = useState("");
+  const isOnMobile = window.innerWidth < 600;
 
   return (
     <section className="search">
@@ -27,12 +28,24 @@ function Search(props) {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => handleKeyDown(e)}
         />
+        {
+        isOnMobile ? "" :
+          <button type="button" className="search__button"
+            onClick={() => props.getNews(query)}
+          >
+            Search
+          </button>
+        }
+      </div>
+      {
+      isOnMobile ?
         <button type="button" className="search__button"
           onClick={() => props.getNews(query)}
         >
           Search
         </button>
-      </div>
+        : ""
+      }
     </section>
   );
 }
