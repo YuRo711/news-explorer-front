@@ -1,6 +1,5 @@
 import { Navigate } from "react-router-dom";
 import "./Saved.css";
-import CardsSection from "../CardsSection/CardsSection";
 import { placeholderSaved } from "../../utils/constants";
 import News from "../News/News";
 

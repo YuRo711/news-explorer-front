@@ -1,15 +1,14 @@
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import { Route, Routes, Navigate, useFormAction } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Saved from "../Saved/Saved";
 import { api } from "../../utils/newsApi.js";
 import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
 import SuccessModal from "../Modals/SuccessModal/SuccessModal.js";
 import LoginModal from "../Modals/LoginModal/LoginModal.js";
-import { placeholderSaved } from "../../utils/constants.js";
 
 function App(props) {
   //#region Methods
@@ -48,10 +47,6 @@ function App(props) {
   function openAnotherModal(modalId, newModalId) {
     setModalsActivity({...modalsActivity, 
       [modalId]: false, [newModalId]: true});
-  }
-
-  function handleFormActivity(formName) {
-    setModalsActivity({...formActivity, [formName]: true});
   }
 
   //#endregion

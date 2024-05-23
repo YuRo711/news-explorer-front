@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import logoutWhite from "../../images/logout white.svg";
 import "./MobileMenu.css";
-import { useState } from "react";
 
 function MobileMenu(props) {
 
@@ -42,6 +41,7 @@ function MobileMenu(props) {
                   Elise
                   <img className="menu__button-icon" 
                     src={logoutWhite}
+                    alt="logout icon"
                   />
                 </button>
               :

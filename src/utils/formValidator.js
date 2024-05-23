@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export class formValidator {
     constructor(formElement, setButtonActivity) {
         this._formElement = formElement;

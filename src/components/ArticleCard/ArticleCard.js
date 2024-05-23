@@ -69,7 +69,10 @@ function ArticleCard(props) {
         </div>
       }
 
-      <img className="card__image" src={data.urlToImage}/>
+      <img className="card__image"
+        src={data.urlToImage}
+        alt="article cover"
+      />
 
       <div className="card__info">
         <p className="card__date">{publishedAt}</p>

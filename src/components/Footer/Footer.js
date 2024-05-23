@@ -25,6 +25,7 @@ function Footer(props) {
             <a className="footer__link" href="https://github.com/YuRo711">
               <img className="footer__icon"
                 src={github}
+                alt="github icon"
               />
             </a>
           </li>

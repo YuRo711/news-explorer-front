@@ -53,6 +53,7 @@ function Header(props) {
             User
             <img className="header__button-icon" 
               src={isOnMain ? logoutWhite : logoutBlack}
+              alt="logout icon"
             />
           </button>
         :
