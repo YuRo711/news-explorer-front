@@ -68,7 +68,7 @@
   margin-top: auto;
 }
 
-.card__save-button {
+.card__button {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -76,17 +76,29 @@
   left: 336px;
   border-radius: 8px;
   border: none;
-  background-image: url('../../images/save.svg');
   cursor: pointer;
 }
 
-.card__save-button:hover {
+.card__button_type_save {
+  background-image: url('../../images/save.svg');
+}
+
+.card__button_type_save:hover {
   background-image: url('../../images/save\ hover.svg');
 }
 
-.card__save-button_saved {
+.card__button_saved {
   background-image: url('../../images/save\ saved.svg');
 }
+
+.card__button_type_delete {
+  background-image: url('../../images/delete.svg');
+}
+
+.card__button_type_delete:hover {
+  background-image: url('../../images/delete\ hover.svg');
+}
+
 
 .card__suggestion {
   position: absolute;
@@ -109,6 +121,23 @@
 
 .card__suggestion_visible {
   opacity: 1;
+}
+
+.card__tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  height: 40px;
+  padding: 0 22px;
+  border-radius: 8px;
+  box-shadow: 0 10px 22px #3B4A741A;
+  background-color: #FFF;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -144,7 +173,7 @@
     text-overflow: ellipsis;    
   }
 
-  .card__save-button {
+  .card__button {
     top: 8px;
     left: 176px;
   }

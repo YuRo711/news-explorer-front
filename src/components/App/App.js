@@ -9,7 +9,7 @@ import { api } from "../../utils/newsApi.js";
 import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
 import SuccessModal from "../Modals/SuccessModal/SuccessModal.js";
 import LoginModal from "../Modals/LoginModal/LoginModal.js";
-import { formValidator } from "../../utils/formValidator.js";
+import { placeholderSaved } from "../../utils/constants.js";
 
 function App(props) {
   //#region Methods
@@ -26,6 +26,10 @@ function App(props) {
   }
 
   function handleSave(event, cardData) {
+    event.stopPropagation();
+  }
+
+  function handleDelete(event, cardData) {
     event.stopPropagation();
   }
 
@@ -55,7 +59,7 @@ function App(props) {
   
   //#region Variables setup
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [news, setNews] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
   const [modalsActivity, setModalsActivity] = useState({
@@ -73,11 +77,16 @@ function App(props) {
     <div className="page">
       <Header
         isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
         openLoginModal={() => handleModalOpen("login")}
       />
       <Routes>
         <Route path="/saved" element={
-          <Saved/>
+          <Saved
+            isLoggedIn={isLoggedIn}
+            handleArticleClick={handleArticleClick}
+            handleDelete={handleDelete}
+          />
         }/>
         <Route path="/" element={
           <Main

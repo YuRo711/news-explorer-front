@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.cards_saved {
+  padding: 0 0 62px;
+}
+
 .cards__title {
   font-family: 'RobotoSlab';
   font-size: 40px;

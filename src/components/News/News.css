@@ -23,6 +23,10 @@
     height: 374px;
 }
 
+.news_saved {
+    padding: 0 102px;
+}
+
 .news__loading-text {
     margin: 24px 0 0;
     font-family: 'Roboto';

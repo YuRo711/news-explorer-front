@@ -1,0 +1,30 @@
+.saved__info {
+  padding: 120px 104px 56px;
+}
+
+.saved__subtitle {
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.5;
+}
+
+.saved__title {
+  font-family: 'RobotoSlab';
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  max-width: 530px;
+  margin: 28px 0 0;
+}
+
+.saved__keywords {
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 400;
+  margin: 30px 0 0;
+}
+
+.saved__keyword {
+  font-weight: bold;
+}

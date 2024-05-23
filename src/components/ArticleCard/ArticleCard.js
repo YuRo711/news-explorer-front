@@ -40,16 +40,34 @@ function ArticleCard(props) {
     <div className="card"
       onClick={() => props.handleArticleClick(data.url)}
     >
-      <button className="card__save-button"
+      <button className={`card__button 
+          ${props.isOnMain ? "card__button_type_save" : "card__button_type_delete"}`}
         type="button"
         onMouseEnter={showSuggestion}
         onMouseLeave={hideSuggestion}
-        onClick={(e) => props.handleSave(e, data)}
+        onClick={(e) => {
+          props.isOnMain ?
+            props.handleSave(e, data) :
+            props.handleDelete(e, data)
+        }}
       />
       <div className={suggestionVisible ? 
         "card__suggestion card__suggestion_visible" : "card__suggestion"}>
-        Sign in to save articles
+          {
+          props.isOnMain ?
+            "Sign in to save articles" :
+            "Remove from saved"
+          }
       </div>
+
+      {
+        // This is a placeholder for now, since I don't have a backend for saving articles
+        // and keywords yet
+        props.isOnMain ? "" :
+        <div className="card__tag">
+          Cats
+        </div>
+      }
 
       <img className="card__image" src={data.urlToImage}/>
 

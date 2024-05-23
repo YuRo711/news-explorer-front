@@ -46,10 +46,11 @@ function Header(props) {
         isOnMobile ? "" :
         isLoggedIn ?
           <button type="button"
-          className={"header__button header__button_type_logout" +
-            (isOnMain ? " header__button_page_main" : "")
-          }>
-            Elise
+            className={"header__button header__button_type_logout" +
+              (isOnMain ? " header__button_page_main" : "")}
+            onClick={() => props.setIsLoggedIn(false)}
+          >
+            User
             <img className="header__button-icon" 
               src={isOnMain ? logoutWhite : logoutBlack}
             />

@@ -2,11 +2,16 @@ import "./News.css";
 import loadingIcon from "../../images/loading.png";
 import notFoundIcon from "../../images/not-found_v1.svg";
 import CardsSection from "../CardsSection/CardsSection";
+import { placeholderSaved } from "../../utils/constants";
+import { useLocation } from "react-router-dom";
 
 function News(props) {
   if (!props.isSearching && !props.news) {
     return;
   }
+  const path = useLocation().pathname;
+  const isOnMain = path === "/";
+
   
   if (!props.news) {
     return (
@@ -28,11 +33,13 @@ function News(props) {
   }
 
   return (
-    <section className="news">
+    <section className={`news ${isOnMain ? "" : "news_saved"}`}>
       <CardsSection
         news={props.news}
         handleSave={props.handleSave}
+        handleDelete={props.handleDelete}
         handleArticleClick={props.handleArticleClick}
+        isOnMain={isOnMain}
       />
     </section>
   );
