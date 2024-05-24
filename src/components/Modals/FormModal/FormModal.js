@@ -19,9 +19,9 @@ function FormModal(props) {
         </button>
 
         <p className="modal__alt">
-            or <span className="modal__link" onClick={props.openAnotherModal}>
+            or <a className="modal__link" onClick={props.openAnotherModal}>
                 {props.altText}
-            </span>
+            </a>
         </p>
       </form>
     </Modal>

@@ -8,11 +8,11 @@ function SuccessModal(props) {
       isOpen={props.isOpen}
     >
       <h2 className="modal__title">Registration successfully completed!</h2>
-      <p className="modal__link modal__link_large"
+      <a className="modal__link modal__link_large"
         onClick={props.openAnotherModal}
       >
         Sign in
-      </p>
+      </a>
     </Modal>
   );
 }
