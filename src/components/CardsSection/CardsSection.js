@@ -17,7 +17,7 @@ function CardsSection(props) {
         <h2 className="cards__title">Search results</h2>
         : ""
       }
-      <div className="cards__grid">
+      <div className={`cards__grid ${isOnMain ? "" : "cards__grid_saved"}`}>
         {
           props.news
             .filter((article) => article.title !== "[Removed]")

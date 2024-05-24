@@ -57,6 +57,10 @@
     margin: 32px 0 0;
   }
 
+  .cards__grid_saved {
+    margin: 0;
+  }
+
   .cards__expand-button {
     width: 240px;
     height: 56px;
@@ -76,5 +80,9 @@
 
   .cards__expand-button {
     margin: 16px auto 0;
+  }
+
+  .cards_saved {
+    padding: 0 0 62px;
   }
 }
