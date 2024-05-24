@@ -9,7 +9,7 @@ function Search(props) {
   }
 
   const [query, setQuery] = useState("");
-  const isOnMobile = window.innerWidth < 600;
+  const { isOnMobile } = props
 
   return (
     <section className="search">

@@ -7,6 +7,7 @@ function Main(props) {
     <main className="main">
       <Search 
         getNews={props.getNews}
+        isOnMobile={props.isOnMobile}
       />
       <News
         news={props.news}

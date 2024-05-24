@@ -6,10 +6,9 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 import { useState } from "react";
 
 function Header(props) {
-  const { isLoggedIn } = props;
+  const { isLoggedIn, isOnMobile } = props;
   const path = useLocation().pathname;
   const isOnMain = path === "/";
-  const isOnMobile = window.innerWidth < 600;
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   return (

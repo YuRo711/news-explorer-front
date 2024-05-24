@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Saved from "../Saved/Saved";
 import { api } from "../../utils/newsApi.js";
 import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
@@ -64,6 +64,18 @@ function App(props) {
     "success": false,
   });
 
+  const [isOnMobile, setIsOnMobile] = useState(false);
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setIsOnMobile(window.innerWidth < 600);
+    });
+    return () => {
+      window.removeEventListener("resize", () => {
+        setIsOnMobile(window.innerWidth < 600);
+      })
+    }
+}, []);
+
   //#endregion
 
 
@@ -75,6 +87,7 @@ function App(props) {
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
         openLoginModal={() => handleModalOpen("login")}
+        isOnMobile={isOnMobile}
       />
       <Routes>
         <Route path="/saved" element={
@@ -92,6 +105,7 @@ function App(props) {
             isLoggedIn={isLoggedIn}
             handleSave={handleSave}
             handleArticleClick={handleArticleClick}
+            isOnMobile={isOnMobile}
           />
         }/>
         <Route path="*" element={
