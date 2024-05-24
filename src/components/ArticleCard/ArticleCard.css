@@ -32,7 +32,7 @@
 }
 
 .card__title {
-  font-family: 'RobotoSlab';
+  font-family: 'RobotoSlab', Courier, monospace;
   font-size: 26px;
   font-weight: 400;
   line-height: 30px;
@@ -45,7 +45,7 @@
 }
 
 .card__description {
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
@@ -58,7 +58,7 @@
 }
 
 .card__author {
-  font-family: 'RobotoSlab';
+  font-family: 'RobotoSlab', Courier, monospace;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
@@ -79,12 +79,18 @@
   cursor: pointer;
 }
 
+/* All the states are down here. card__button is a parent class for save and delete buttons. */
+
 .card__button_type_save {
   background-image: url('../../images/save.svg');
 }
 
 .card__button_type_save:hover {
   background-image: url('../../images/save\ hover.svg');
+}
+
+.card__button_type_save:active {
+  background-image: url('../../images/save\ saved.svg');
 }
 
 .card__button_saved {
@@ -109,7 +115,7 @@
   border-radius: 8px;
   box-shadow: 0 10px 22px #3B4A741A;
   background-color: #FFF;
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   display: flex;
@@ -132,7 +138,7 @@
   border-radius: 8px;
   box-shadow: 0 10px 22px #3B4A741A;
   background-color: #FFF;
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   display: flex;

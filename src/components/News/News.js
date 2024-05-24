@@ -1,5 +1,5 @@
 import "./News.css";
-import loadingIcon from "../../images/loading.png";
+import loadingIcon from "../../images/loading.svg";
 import notFoundIcon from "../../images/not-found_v1.svg";
 import CardsSection from "../CardsSection/CardsSection";
 import { useLocation } from "react-router-dom";
@@ -39,6 +39,7 @@ function News(props) {
         handleDelete={props.handleDelete}
         handleArticleClick={props.handleArticleClick}
         isOnMain={isOnMain}
+        isLoggedIn={props.isLoggedIn}
       />
     </section>
   );

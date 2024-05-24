@@ -52,7 +52,7 @@
 }
 
 .menu__link {
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 56px;
@@ -68,7 +68,7 @@
   border-radius: 28px;
   border: 1px solid #FFF;
   color: #FFF;
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;

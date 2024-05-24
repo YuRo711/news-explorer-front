@@ -21,7 +21,7 @@ function ArticleCard(props) {
   }
 
   function showSuggestion() {
-    if (!props.isLoggedIn) {
+    if (!props.isLoggedIn || !props.isOnMain) {
       setSuggestionVisible(true);
     }
   }

@@ -26,6 +26,7 @@ function App(props) {
 
   function handleSave(event, cardData) {
     event.stopPropagation();
+    // no saving is implemented yet, as there is no database to store the saved articles in
   }
 
   function handleDelete(event, cardData) {
