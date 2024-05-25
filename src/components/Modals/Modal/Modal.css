@@ -66,6 +66,11 @@
     color: #184fad;
 }
 
+.modal__link:focus {
+    color: #184fad;
+    text-decoration: underline;
+}
+
 .modal__link:active {
     color: #0a3174;
 }
