@@ -57,17 +57,20 @@
 @media screen and (max-width: 600px) {
     .author {
         flex-direction: column;
-        align-items: center;
         gap: 24px;
-        padding: 40px;
+        padding: 40px 16px;
     }
  
     .author__title {
         margin: 0;
+        font-size: 30px;
+        line-height: 40px;
+        
     }
     
     .author__image {
         width: 272px;
         height: 272px;
+        align-self: center;
     }
 }

@@ -2,7 +2,9 @@
     margin-top: auto;
     display: flex;
     align-items: center;
-    padding: 32px 104px 26px;
+    padding: 0 104px;
+    height: 80px;
+    box-sizing: border-box;
 }
 
 .footer__copyright {
@@ -47,12 +49,14 @@
 @media screen and (min-width: 600px) and (max-width: 1300px) {
     .footer {
         padding: 0 40px;
+        height: 64px;
     }
 }
 
 @media screen and (max-width: 600px) {
     .footer {
-        padding: 20px 16px;
+        height: 176px;
+        padding: 0 16px 20px;
         flex-direction: column-reverse;
     }
 

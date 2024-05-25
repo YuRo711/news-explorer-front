@@ -170,7 +170,7 @@
 
   .card__description {
     -webkit-line-clamp: 4;
-    margin: 10px 0 0 ;
+    margin: 10px 0 0;
   }
 
   .card__author {
@@ -193,11 +193,32 @@
 @media screen and (max-width: 600px) {
   .card {
     width: calc(100vw - 32px);
+    height: 440px;
+  }
+
+  .card__image {
+    max-height: 196px;
+  }
+
+  .card__info {
+    padding: 16px 16px;
+    height: 244px;
+  }
+
+  .card__title {
+    font-size: 22px;
+    -webkit-line-clamp: 2;
   }
 
   .card__description {
     -webkit-line-clamp: 4;
     margin: 10px 0 0 ;
+  }
+
+  .card__author {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
   }
 
   .card__button {
