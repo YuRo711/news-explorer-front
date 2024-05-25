@@ -63,7 +63,11 @@
 }
 
 .modal__link:hover {
-    color: #6497ee;
+    color: #184fad;
+}
+
+.modal__link:active {
+    color: #0a3174;
 }
 
 .modal__link_large {
