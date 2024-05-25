@@ -21,7 +21,7 @@ function FormModal(props) {
         <p className="modal__alt">
             or <a className="modal__link"
               onClick={props.openAnotherModal}
-              tabindex="0"
+              tabIndex="0"
             >
                 {props.altText}
             </a>
