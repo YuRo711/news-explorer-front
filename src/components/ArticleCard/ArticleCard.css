@@ -73,7 +73,7 @@
   width: 40px;
   height: 40px;
   top: 24px;
-  left: 336px;
+  right: 32px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -181,7 +181,12 @@
 
   .card__button {
     top: 8px;
-    left: 176px;
+    right: 8px;
+  }
+
+  .card__tag {
+    top: 8px;
+    left: 8px;
   }
 }
 
@@ -193,5 +198,15 @@
   .card__description {
     -webkit-line-clamp: 4;
     margin: 10px 0 0 ;
+  }
+
+  .card__button {
+    top: 16px;
+    right: 16px;
+  }
+
+  .card__tag {
+    top: 16px;
+    left: 16px;
   }
 }
