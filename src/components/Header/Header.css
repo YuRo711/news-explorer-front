@@ -96,12 +96,19 @@
 
 .header__menu-button {
   background: none;
-  background-image: url('../../images/menu.svg');
   border: none;
   width: 24px;
   height: 24px;
   margin-left: auto;
   cursor: pointer;
+}
+
+.header__menu-button_white {
+  background-image: url('../../images/menu\ white.svg');
+}
+
+.header__menu-button_black {
+  background-image: url('../../images/menu\ black.svg');
 }
 
 

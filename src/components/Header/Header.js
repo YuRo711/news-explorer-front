@@ -16,7 +16,11 @@ function Header(props) {
       <h1 className="header__title">NewsExplorer</h1>
       {
       isOnMobile ?
-      <button className="header__menu-button" onClick={() => setMenuOpen(true)}/>
+      <button
+        className={"header__menu-button " + 
+          (isOnMain ? " header__menu-button_white" : "header__menu-button_black")}
+        onClick={() => setMenuOpen(true)}
+      />
       :
         <nav className="header__nav">
           <NavLink className="header__link" to="/">

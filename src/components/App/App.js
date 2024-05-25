@@ -64,7 +64,7 @@ function App(props) {
     "success": false,
   });
 
-  const [isOnMobile, setIsOnMobile] = useState(false);
+  const [isOnMobile, setIsOnMobile] = useState(window.innerWidth < 600);
   useEffect(() => {
     window.addEventListener("resize", () => {
       setIsOnMobile(window.innerWidth < 600);
@@ -73,8 +73,8 @@ function App(props) {
       window.removeEventListener("resize", () => {
         setIsOnMobile(window.innerWidth < 600);
       })
-    }
-}, []);
+      }
+  }, []);
 
   //#endregion
 
