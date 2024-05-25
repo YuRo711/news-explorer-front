@@ -74,6 +74,7 @@ function Header(props) {
           isMenuOpen={isMenuOpen}
           setMenuOpen={setMenuOpen}
           openLoginModal={props.openLoginModal}
+          setIsLoggedIn={props.setIsLoggedIn}
         />
         : ""
       }

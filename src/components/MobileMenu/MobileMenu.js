@@ -41,6 +41,10 @@ function MobileMenu(props) {
               isLoggedIn ?
                 <button type="button"
                   className="menu__button"
+                  onClick={() => {
+                    props.setIsLoggedIn(false);
+                    props.setMenuOpen(false);
+                  }}
                 >
                   Elise
                   <img className="menu__button-icon" 
