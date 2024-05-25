@@ -184,3 +184,14 @@
     left: 176px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: calc(100vw - 32px);
+  }
+
+  .card__description {
+    -webkit-line-clamp: 4;
+    margin: 10px 0 0 ;
+  }
+}

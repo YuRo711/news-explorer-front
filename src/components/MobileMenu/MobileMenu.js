@@ -22,12 +22,16 @@ function MobileMenu(props) {
         </div>
         <div className="menu__main">
           <nav className="menu__nav">
-              <NavLink className="menu__link" to="/">
+              <NavLink className="menu__link" to="/"
+                onClick={() => props.setMenuOpen(false)}
+              >
                 Home
               </NavLink>
               {
                 isLoggedIn ? 
-                  <NavLink className="menu__link" to="/saved">
+                  <NavLink className="menu__link" to="/saved"
+                    onClick={() => props.setMenuOpen(false)}
+                  >
                     Saved articles
                   </NavLink>
                 : ""
