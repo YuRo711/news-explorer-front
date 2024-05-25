@@ -68,6 +68,12 @@
   }
 }
 
+@media screen and (min-width: 600px) and (max-width: 7200px) {
+  .cards__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .cards {
     padding: 32px 16px;

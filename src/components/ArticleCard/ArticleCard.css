@@ -12,6 +12,7 @@
   min-width: 100%;
   max-height: 272px;
   overflow: hidden;
+  object-fit: cover;
 }
 
 .card__info {
@@ -187,6 +188,13 @@
   .card__tag {
     top: 8px;
     left: 8px;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 7200px) {
+  .card {
+    width: calc(100vw - 80px);
+    height: 440px;
   }
 }
 
