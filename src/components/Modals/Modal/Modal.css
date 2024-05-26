@@ -55,27 +55,31 @@
     font-weight: 400;
 }
 
-.modal__link {
+.modal__link-button {
     font-family: 'Inter', Arial, sans-serif;
     font-weight: 400;
+    font-size: 14px;
     color: #2F71E5;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
-.modal__link:hover {
+.modal__link-button:hover {
     color: #184fad;
 }
 
-.modal__link:focus {
+.modal__link-button:focus {
     color: #184fad;
     text-decoration: underline;
 }
 
-.modal__link:active {
+.modal__link-button:active {
     color: #0a3174;
 }
 
-.modal__link_large {
+.modal__link-button_large {
     font-size: 18px;
 }
 
