@@ -59,7 +59,7 @@
     .author {
         flex-direction: column;
         gap: 24px;
-        padding: 40px 16px;
+        padding: 40px 16px 128px;
     }
  
     .author__title {
