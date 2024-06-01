@@ -1,0 +1,241 @@
+.card {
+  width: 400px;
+  height: 576px;
+  border-radius: 8px;
+  background-color: #FFF;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.card__image {
+  min-width: 100%;
+  max-height: 272px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.card__info {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 304px;
+}
+
+.card__date {
+  margin: 0;
+  font-family: 'SourceSans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #B6BCBF;
+}
+
+.card__title {
+  font-family: 'RobotoSlab', Courier, monospace;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  margin: 12px 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__description {
+  font-family: 'Roboto', Arial, sans-serif, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 16px 0 0 ;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__author {
+  font-family: 'RobotoSlab', Courier, monospace;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  color: #B6BCBF;
+  text-transform: uppercase;
+  margin-top: auto;
+}
+
+.card__button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 24px;
+  right: 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* All the states are down here. card__button is a parent class for save and delete buttons. */
+
+.card__button_type_save {
+  background-image: url('../../images/save.svg');
+}
+
+.card__button_type_save:hover {
+  background-image: url('../../images/save\ hover.svg');
+}
+
+.card__button_type_save:active {
+  background-image: url('../../images/save\ saved.svg');
+}
+
+.card__button_saved {
+  background-image: url('../../images/save\ saved.svg');
+}
+
+.card__button_type_delete {
+  background-image: url('../../images/delete.svg');
+}
+
+.card__button_type_delete:hover {
+  background-image: url('../../images/delete\ hover.svg');
+}
+
+
+.card__suggestion {
+  position: absolute;
+  width: 182px;
+  height: 40px;
+  top: 24px;
+  left: 149px;
+  border-radius: 8px;
+  box-shadow: 0 10px 22px #3B4A741A;
+  background-color: #FFF;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card__suggestion_visible {
+  opacity: 1;
+}
+
+.card__tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  height: 40px;
+  padding: 0 22px;
+  border-radius: 8px;
+  box-shadow: 0 10px 22px #3B4A741A;
+  background-color: #FFF;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 1300px) {
+  .card {
+    width: 224px;
+    height: 420px;
+  }
+  
+  .card__image {
+    max-height: 150px;
+  }
+
+  .card__info {
+    padding: 6px 15px;
+    height: 270px;
+  }
+
+  .card__title {
+    font-size: 22px;
+    line-height: 24px;
+    -webkit-line-clamp: 3;
+  }
+
+  .card__description {
+    -webkit-line-clamp: 4;
+    margin: 10px 0 0;
+  }
+
+  .card__author {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+  }
+
+  .card__button {
+    top: 8px;
+    right: 8px;
+  }
+
+  .card__tag {
+    top: 8px;
+    left: 8px;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 720px) {
+  .card {
+    width: calc(100vw - 80px);
+    height: 440px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: calc(100vw - 32px);
+    height: 440px;
+  }
+
+  .card__image {
+    max-height: 196px;
+  }
+
+  .card__info {
+    padding: 16px 16px;
+    height: 244px;
+  }
+
+  .card__title {
+    font-size: 22px;
+    -webkit-line-clamp: 2;
+  }
+
+  .card__description {
+    -webkit-line-clamp: 4;
+    margin: 10px 0 0 ;
+  }
+
+  .card__author {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+  }
+
+  .card__button {
+    top: 16px;
+    right: 16px;
+  }
+
+  .card__tag {
+    top: 16px;
+    left: 16px;
+  }
+}
