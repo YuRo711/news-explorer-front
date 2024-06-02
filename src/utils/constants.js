@@ -11,3 +11,7 @@ export const placeholderSaved = [
         urlToImage: "https://cdn.arstechnica.net/wp-content/uploads/2024/05/catsTOP-760x380.jpg",
     },
 ];
+
+export const baseUrl = process.env.NODE_ENV === "production" 
+? "https://news-explorer.good-newz.org/"
+: "http://localhost:3001";

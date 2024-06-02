@@ -9,6 +9,8 @@ import { api } from "../../utils/newsApi.js";
 import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
 import SuccessModal from "../Modals/SuccessModal/SuccessModal.js";
 import LoginModal from "../Modals/LoginModal/LoginModal.js";
+import { mainApi } from "../../utils/mainApi.js";
+import { getToken, removeToken, setToken } from "../../utils/token.js";
 
 function App(props) {
   //#region Methods
@@ -48,6 +50,27 @@ function App(props) {
   function openAnotherModal(modalId, newModalId) {
     setModalsActivity({...modalsActivity, 
       [modalId]: false, [newModalId]: true});
+  }
+
+  async function registerUser(name, avatar, email, password) {
+    return mainApi.addUser({ name, avatar, email, password })
+      .then((res) => {
+        setToken(res.token);
+        setIsLoggedIn(true);
+      });
+  }
+
+  async function signIn(email, password) {
+    return mainApi.signIn({ email, password })
+      .then((res) => {
+        setToken(res.token);
+        setIsLoggedIn(true);
+      });
+  }
+
+  function logOut() {
+    removeToken();
+    setIsLoggedIn(false);
   }
 
   //#endregion
