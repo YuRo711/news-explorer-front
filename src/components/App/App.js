@@ -123,9 +123,9 @@ function App(props) {
     <CurrentUserContext.Provider value={currentUser}>
       <Header
         isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
         openLoginModal={() => handleModalOpen("login")}
         isOnMobile={isOnMobile}
+        logOut={logOut}
       />
       <Routes>
         <Route path="/saved" element={

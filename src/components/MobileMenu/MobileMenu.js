@@ -42,7 +42,7 @@ function MobileMenu(props) {
                 <button type="button"
                   className="menu__button"
                   onClick={() => {
-                    props.setIsLoggedIn(false);
+                    props.logOut();
                     props.setMenuOpen(false);
                   }}
                 >

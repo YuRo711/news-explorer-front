@@ -51,7 +51,7 @@ function Header(props) {
           <button type="button"
             className={"header__button header__button_type_logout" +
               (isOnMain ? " header__button_page_main" : "")}
-            onClick={() => props.setIsLoggedIn(false)}
+            onClick={props.logOut}
           >
             User
             <img className="header__button-icon" 
@@ -74,7 +74,7 @@ function Header(props) {
           isMenuOpen={isMenuOpen}
           setMenuOpen={setMenuOpen}
           openLoginModal={props.openLoginModal}
-          setIsLoggedIn={props.setIsLoggedIn}
+          logOut={props.logOut}
         />
         : ""
       }
