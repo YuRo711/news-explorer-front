@@ -63,11 +63,14 @@ function App(props) {
         link: cardData.url,
         image: cardData.urlToImage,
     });
-    console.log(cardData);
   }
 
   function handleDelete(event, cardData) {
     event.stopPropagation();
+    userApi.deleteArticle(cardData._id)
+      .then(() => {
+        setArticles(articles.filter((data) => data._id != cardData._id));
+      });
   }
 
   function handleArticleClick(url) {

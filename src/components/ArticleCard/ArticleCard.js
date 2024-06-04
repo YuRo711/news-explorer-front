@@ -65,7 +65,7 @@ function ArticleCard(props) {
         // and keywords yet
         props.isOnMain ? "" :
         <div className="card__tag">
-          Cats
+          {data.keyword}
         </div>
       }
 

@@ -36,9 +36,10 @@ function Saved(props) {
         <h3 className="saved__subtitle">Saved articles</h3>
         <h2 className="saved__title">
           {username}, you have {props.articles.length} saved article
-          {props.articles.length > 0 ? "s" : ""}
+          {props.articles.length != 1 ? "s" : ""}
         </h2>
-        <p className="saved__keywords">By keywords: 
+        <p className="saved__keywords">
+          By keywords: 
           <span className="saved__keyword"> {keywords}</span>
         </p>
       </div>

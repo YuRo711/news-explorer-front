@@ -44,6 +44,10 @@ class mainApi {
     return this._request("/articles/", "POST", cardData);
   }
 
+  async deleteArticle(cardId) {
+    return this._request(`/articles/${cardId}`, "DELETE");
+  }
+
   setTokenHeader(token) {
     this._headers = new Headers({
       "content-Type": "application/json",
