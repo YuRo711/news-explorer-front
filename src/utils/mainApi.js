@@ -40,6 +40,10 @@ class mainApi {
     return this._request("/articles/", "GET");
   }
 
+  async saveArticle(cardData) {
+    return this._request("/articles/", "POST", cardData);
+  }
+
   setTokenHeader(token) {
     this._headers = new Headers({
       "content-Type": "application/json",

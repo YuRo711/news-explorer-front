@@ -18,10 +18,10 @@ function App(props) {
 
   function getNews(query) {
     if (query) {
+      setKeyword(query);
       setIsSearching(true);
-      api.getNews(query)
-        .then((json) => {
-          setNews(json["articles"]);
+      api.getNews(query).then((newJson) => {
+          setNews(newJson["articles"]);
           setIsSearching(false);
         });
     }
@@ -29,14 +29,41 @@ function App(props) {
 
   function getSavedArticles() {
     userApi.getArticles()
-      .then((res) => {
-        setArticles(res.data);
+    .then((res) => {
+      const json = res.data.map((data) => {
+        const newData = 
+          {
+            _id: data._id,
+            keyword: data.keyword,
+            title: data.title,
+            description: data.text,
+            publishedAt: data.date,
+            author: data.source,
+            url: data.link,
+            urlToImage: data.image,
+        };
+        return newData;
+      });
+      return json;
+    })
+      .then((json) => {
+        setArticles(json);
     });
   }
 
   function handleSave(event, cardData) {
     event.stopPropagation();
-    // no saving is implemented yet, as there is no database to store the saved articles in
+    userApi.saveArticle(
+      { 
+        keyword,
+        title: cardData.title,
+        text: cardData.description,
+        date: cardData.publishedAt,
+        source: cardData.author,
+        link: cardData.url,
+        image: cardData.urlToImage,
+    });
+    console.log(cardData);
   }
 
   function handleDelete(event, cardData) {
@@ -97,6 +124,7 @@ function App(props) {
   });
   const [currentUser, setCurrentUser] = useState({});
   const [articles, setArticles] = useState(null);
+  const [keyword, setKeyword] = useState(null);
   const [isOnMobile, setIsOnMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
