@@ -3,13 +3,17 @@ import logoutWhite from "../../images/logout white.svg";
 import logoutBlack from "../../images/logout black.svg";
 import "./Header.css";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header(props) {
   const { isLoggedIn, isOnMobile } = props;
   const path = useLocation().pathname;
   const isOnMain = path === "/";
   const [isMenuOpen, setMenuOpen] = useState(false);
+
+	const currentUser = useContext(CurrentUserContext);
+  const username = currentUser.name;
 
   return (
     <header className={"header" + (isOnMain ? " header_page_main" : "")}>
@@ -53,7 +57,7 @@ function Header(props) {
               (isOnMain ? " header__button_page_main" : "")}
             onClick={props.logOut}
           >
-            User
+            {username}
             <img className="header__button-icon" 
               src={isOnMain ? logoutWhite : logoutBlack}
               alt="logout icon"
@@ -75,6 +79,7 @@ function Header(props) {
           setMenuOpen={setMenuOpen}
           openLoginModal={props.openLoginModal}
           logOut={props.logOut}
+          username={username}
         />
         : ""
       }

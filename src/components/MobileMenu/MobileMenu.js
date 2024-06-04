@@ -46,7 +46,7 @@ function MobileMenu(props) {
                     props.setMenuOpen(false);
                   }}
                 >
-                  Elise
+                  {props.username}
                   <img className="menu__button-icon" 
                     src={logoutWhite}
                     alt="logout icon"
