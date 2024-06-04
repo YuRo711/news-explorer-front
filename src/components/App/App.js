@@ -34,7 +34,7 @@ function App(props) {
         const newData = 
           {
             _id: data._id,
-            keyword: data.keyword,
+            keyword: data.keyword.charAt(0).toUpperCase() + data.keyword.slice(1),
             title: data.title,
             description: data.text,
             publishedAt: data.date,
@@ -57,9 +57,9 @@ function App(props) {
       { 
         keyword,
         title: cardData.title,
-        text: cardData.description,
+        text: cardData.description || "[Empty]",
         date: cardData.publishedAt,
-        source: cardData.author,
+        source: cardData.author || "Unknown",
         link: cardData.url,
         image: cardData.urlToImage,
     });
