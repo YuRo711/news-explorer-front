@@ -13,5 +13,5 @@ export const placeholderSaved = [
 ];
 
 export const baseUrl = process.env.NODE_ENV === "production" 
-? "https://news-explorer.good-newz.org/"
-: "http://localhost:3001";
+    ? "https://news-explorer.good-newz.org/"
+    : "http://localhost:3001";

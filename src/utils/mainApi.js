@@ -44,4 +44,4 @@ class mainApi {
   }
 }
 
-export const mainApi = new mainApi();
+export const userApi = new mainApi();

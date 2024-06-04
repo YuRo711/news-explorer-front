@@ -8,7 +8,13 @@ function FormModal(props) {
       isOpen={props.isOpen}
     >
       <h2 className="modal__title">{props.title}</h2>
-      <form className="modal__form" ref={props.formRef}>
+      <form className="modal__form"
+        ref={props.formRef}
+        onSubmit={(e) => {
+          e.preventDefault();
+          props.onSubmit();
+        }}
+      >
         
         {props.children}
 

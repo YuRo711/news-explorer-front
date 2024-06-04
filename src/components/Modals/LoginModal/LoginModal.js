@@ -15,12 +15,20 @@ function LoginModal(props) {
     validator.toggleButtonState();
   }
 
+  function submit() {
+    props.signIn(email, password);
+  }
+
+
   const [isButtonActive, setButtonActivity] = useState(false);
   const [validator, setValidator] = useState(null);
   const formRef = useRef();
   useEffect(() => {
     enableValidation();
-  }, [formRef])
+  }, [formRef]);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <FormModal
@@ -33,13 +41,17 @@ function LoginModal(props) {
       openAnotherModal={props.openAnotherModal}
       formRef={formRef}
       isButtonActive={isButtonActive}
+      onSubmit={submit}
     >
       <label className="modal__label"><p className="modal__label-text">Email</p>
         <input className="modal__input"
           type="text"
           id="email"
           placeholder="Enter email"
-          onChange={toggleButtonState}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            toggleButtonState();
+          }}
           required
         />
         <p className="modal__error" id="email-error"></p>
@@ -50,7 +62,10 @@ function LoginModal(props) {
           type="password"
           id="password"
           placeholder="Enter password"
-          onChange={toggleButtonState}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            toggleButtonState();
+          }}
           required
         />
         <p className="modal__error" id="password-error"></p>
