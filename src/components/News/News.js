@@ -26,7 +26,11 @@ function News(props) {
       <section className="news news_result_none">
         <img className="news__not-found-icon" src={notFoundIcon} alt="not found icon"/>
         <h2 className="news__not-found-title">Nothing found</h2>
-        <p className="news__not-found-text">Sorry, but nothing matched your search terms.</p>
+        <p className="news__not-found-text">
+          {isOnMain ? 
+            "Sorry, but nothing matched your search terms." : 
+            "No saved articles yet."}
+        </p>
       </section>
     );
   }

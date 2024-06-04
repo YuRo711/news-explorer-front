@@ -27,6 +27,13 @@ function App(props) {
     }
   }
 
+  function getSavedArticles() {
+    userApi.getArticles()
+      .then((res) => {
+        setArticles(res.data);
+    });
+  }
+
   function handleSave(event, cardData) {
     event.stopPropagation();
     // no saving is implemented yet, as there is no database to store the saved articles in
@@ -89,6 +96,7 @@ function App(props) {
 
   });
   const [currentUser, setCurrentUser] = useState({});
+  const [articles, setArticles] = useState(null);
   const [isOnMobile, setIsOnMobile] = useState(window.innerWidth < 600);
 
   useEffect(() => {
@@ -99,6 +107,7 @@ function App(props) {
           userApi.setTokenHeader(token);
           setCurrentUser(res.data);
           setIsLoggedIn(true);
+          getSavedArticles();
         })
         .catch((err) => { console.log(err) });
     }
@@ -133,6 +142,7 @@ function App(props) {
             isLoggedIn={isLoggedIn}
             handleArticleClick={handleArticleClick}
             handleDelete={handleDelete}
+            articles={articles}
           />
         }/>
         <Route path="/" element={

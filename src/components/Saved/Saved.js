@@ -23,7 +23,7 @@ function Saved(props) {
         </p>
       </div>
       <News
-        news={placeholderSaved}
+        news={props.articles}
         isLoggedIn={props.isLoggedIn}
         handleDelete={props.handleDelete}
         handleArticleClick={props.handleArticleClick}

@@ -36,6 +36,10 @@ class mainApi {
     return this._request("/users/me", "GET");
   }
 
+  async getArticles() {
+    return this._request("/articles/", "GET");
+  }
+
   setTokenHeader(token) {
     this._headers = new Headers({
       "content-Type": "application/json",
