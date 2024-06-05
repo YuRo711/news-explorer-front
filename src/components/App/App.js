@@ -69,7 +69,7 @@ function App(props) {
     event.stopPropagation();
     userApi.deleteArticle(cardData._id)
       .then(() => {
-        setArticles(articles.filter((data) => data._id != cardData._id));
+        setArticles(articles.filter((data) => data._id !== cardData._id));
       });
   }
 
