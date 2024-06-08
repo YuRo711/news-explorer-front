@@ -2,7 +2,7 @@
   "name": "news-explorer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "news-explorer.good-newz.org",
+  "homepage": "https://news-explorer.good-newz.org",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --fix --ext .js,.jsx ."
+    "lint": "eslint --fix --ext .js,.jsx .",
+    "deploy": "npm run build && scp -r ./build/* karpsy711@news-explorer.good-newz.org:/home/karpsy711/news-explorer-front"
   },
   "eslintConfig": {
     "extends": [
