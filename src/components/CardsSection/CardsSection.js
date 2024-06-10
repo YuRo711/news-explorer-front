@@ -31,6 +31,7 @@ function CardsSection(props) {
                 handleDelete={props.handleDelete}
                 handleArticleClick={props.handleArticleClick}
                 isOnMain={isOnMain}
+                savedArticles={props.savedArticles}
               />
             ))
         }

@@ -34,15 +34,23 @@ function ArticleCard(props) {
     if (!isSaved) {
       props.handleSave(e, data);
       setSaved(true);
+    } else {
+      props.handleDelete(e, savedData);
+      setSaved(false);
     }
   }
 
 
-  const { data } = props;
+  const { data, savedArticles, isOnMain } = props;
   const publishedAt = formatDate(new Date(data.publishedAt));
   const author = formatAuthor(data.author);
   const [suggestionVisible, setSuggestionVisible] = useState(false);
-  const [isSaved, setSaved] = useState(false);
+
+  const savedData = isOnMain ? 
+    savedArticles
+      .find((article) => article.url === data.url)
+    : undefined;
+  const [isSaved, setSaved] = useState(savedData !== undefined);
 
 
   return (
@@ -50,7 +58,7 @@ function ArticleCard(props) {
       onClick={() => props.handleArticleClick(data.url)}
     >
       <button className={`card__button 
-          ${props.isOnMain ? 
+          ${isOnMain ? 
             (`card__button_type_save 
               ${isSaved ? "card__button_type_save_saved" : ""}`) 
             : "card__button_type_delete"
@@ -60,7 +68,7 @@ function ArticleCard(props) {
         onMouseEnter={showSuggestion}
         onMouseLeave={hideSuggestion}
         onClick={(e) => {
-          props.isOnMain ?
+          isOnMain ?
             handleSave(e, data) :
             props.handleDelete(e, data)
         }}
@@ -68,14 +76,14 @@ function ArticleCard(props) {
       <div className={suggestionVisible ? 
         "card__suggestion card__suggestion_visible" : "card__suggestion"}>
           {
-          props.isOnMain ?
+          isOnMain ?
             "Sign in to save articles" :
             "Remove from saved"
           }
       </div>
 
       {
-        props.isOnMain ? "" :
+        isOnMain ? "" :
         <div className="card__tag">
           {data.keyword}
         </div>

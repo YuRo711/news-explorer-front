@@ -16,6 +16,7 @@ function Main(props) {
         handleSave={props.handleSave}
         handleDelete={props.handleDelete}
         handleArticleClick={props.handleArticleClick}
+        savedArticles={props.savedArticles}
       />
       <Author />
     </main>

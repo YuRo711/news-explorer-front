@@ -44,6 +44,7 @@ function News(props) {
         handleArticleClick={props.handleArticleClick}
         isOnMain={isOnMain}
         isLoggedIn={props.isLoggedIn}
+        savedArticles={props.savedArticles}
       />
     </section>
   );

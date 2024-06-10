@@ -186,6 +186,7 @@ function App(props) {
             handleDelete={handleDelete}
             handleArticleClick={handleArticleClick}
             isOnMobile={isOnMobile}
+            savedArticles={articles}
           />
         }/>
         <Route path="*" element={
