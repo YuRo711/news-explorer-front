@@ -30,24 +30,38 @@ function ArticleCard(props) {
     setSuggestionVisible(false);
   }
 
+  function handleSave(e, data) {
+    if (!isSaved) {
+      props.handleSave(e, data);
+      setSaved(true);
+    }
+  }
+
 
   const { data } = props;
   const publishedAt = formatDate(new Date(data.publishedAt));
   const author = formatAuthor(data.author);
   const [suggestionVisible, setSuggestionVisible] = useState(false);
+  const [isSaved, setSaved] = useState(false);
+
 
   return (
     <div className="card"
       onClick={() => props.handleArticleClick(data.url)}
     >
       <button className={`card__button 
-          ${props.isOnMain ? "card__button_type_save" : "card__button_type_delete"}`}
+          ${props.isOnMain ? 
+            (`card__button_type_save 
+              ${isSaved ? "card__button_type_save_saved" : ""}`) 
+            : "card__button_type_delete"
+          }
+        `}
         type="button"
         onMouseEnter={showSuggestion}
         onMouseLeave={hideSuggestion}
         onClick={(e) => {
           props.isOnMain ?
-            props.handleSave(e, data) :
+            handleSave(e, data) :
             props.handleDelete(e, data)
         }}
       />
@@ -61,8 +75,6 @@ function ArticleCard(props) {
       </div>
 
       {
-        // This is a placeholder for now, since I don't have a backend for saving articles
-        // and keywords yet
         props.isOnMain ? "" :
         <div className="card__tag">
           {data.keyword}

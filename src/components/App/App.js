@@ -183,6 +183,7 @@ function App(props) {
             isSearching={isSearching}
             isLoggedIn={isLoggedIn}
             handleSave={handleSave}
+            handleDelete={handleDelete}
             handleArticleClick={handleArticleClick}
             isOnMobile={isOnMobile}
           />

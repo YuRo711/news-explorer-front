@@ -14,6 +14,7 @@ function Main(props) {
         isSearching={props.isSearching}
         isLoggedIn={props.isLoggedIn}
         handleSave={props.handleSave}
+        handleDelete={props.handleDelete}
         handleArticleClick={props.handleArticleClick}
       />
       <Author />

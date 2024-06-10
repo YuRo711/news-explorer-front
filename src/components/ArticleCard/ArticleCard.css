@@ -94,6 +94,10 @@
   background-image: url('../../images/save\ saved.svg');
 }
 
+.card__button_type_save_saved {
+  background-image: url('../../images/save\ saved.svg');  
+}
+
 .card__button_saved {
   background-image: url('../../images/save\ saved.svg');
 }
