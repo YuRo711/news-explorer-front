@@ -13,7 +13,7 @@ function Saved(props) {
     const keywords = articles
       .map((data) => data.keyword );
     const uniqueKeywords = keywords
-      .filter(i => keywords.indexOf(i) === keywords.lastIndexOf(i));
+      .filter((word, i) => keywords.indexOf(word) === i);
 
     return uniqueKeywords
       .filter((keyword, i) => i < 2)
