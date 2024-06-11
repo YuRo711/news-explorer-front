@@ -24,7 +24,7 @@ function CardsSection(props) {
             .filter((article, i) => isExpanded || i < 3 || !isOnMain)
             .map((article, i) => (
               <ArticleCard
-                key={i}
+                key={article._id || `card${i}`}
                 data={article}
                 isLoggedIn={props.isLoggedIn}
                 handleSave={props.handleSave}
