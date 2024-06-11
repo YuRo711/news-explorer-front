@@ -6,9 +6,9 @@ function ProtectedRoute(props) {
         return <Navigate to="/"/>;
     }
     return (
-        <Route path={props.path}>
+        <div className="protected-route">
             {props.children}
-        </Route>
+        </div>
     );
 }
 

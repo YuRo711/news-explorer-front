@@ -3,7 +3,7 @@ import logoutWhite from "../../images/logout white.svg";
 import logoutBlack from "../../images/logout black.svg";
 import "./Header.css";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header(props) {
@@ -13,7 +13,12 @@ function Header(props) {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
 	const currentUser = useContext(CurrentUserContext);
-  const username = currentUser.name;
+  const [username, setUsername] = useState(currentUser.name);
+
+  useEffect(() => {
+    setUsername(currentUser.name);
+  }, [currentUser.name]);
+
 
   return (
     <header className={"header" + (isOnMain ? " header_page_main" : "")}>
