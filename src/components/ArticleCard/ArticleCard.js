@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import "./ArticleCard.css";
 
 function ArticleCard(props) {
@@ -51,11 +51,18 @@ function ArticleCard(props) {
   const author = formatAuthor(data.author);
   const [suggestionVisible, setSuggestionVisible] = useState(false);
 
-  const savedData = isOnMain && isLoggedIn ? 
+  const savedData = savedArticles ? 
     savedArticles
       .find((article) => article.url === data.url)
     : undefined;
   const [isSaved, setSaved] = useState(savedData !== undefined);
+
+  useEffect(() => {const savedData = savedArticles ? 
+    savedArticles
+      .find((article) => article.url === data.url)
+    : undefined;
+    setSaved(savedData !== undefined);
+  }, [savedArticles])
 
 
   return (

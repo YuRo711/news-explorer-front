@@ -95,6 +95,7 @@ function App(props) {
       .then((res) => {
         setToken(res.token);
         setIsLoggedIn(true);
+        handleModalClose("signup");
       });
   }
 
@@ -103,12 +104,19 @@ function App(props) {
       .then((res) => {
         setToken(res.token);
         setIsLoggedIn(true);
+        handleModalClose("login");
+      })
+      .then(() => {
+        if (keyword) {
+          getNews(keyword);
+        }
       });
   }
 
   function logOut() {
     removeToken();
     setIsLoggedIn(false);
+    setArticles(null);
   }
 
   //#endregion
