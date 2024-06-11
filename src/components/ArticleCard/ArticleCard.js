@@ -31,6 +31,11 @@ function ArticleCard(props) {
   }
 
   function handleSave(e, data) {
+    if (!isLoggedIn) {
+      e.stopPropagation();
+      return;
+    }
+
     if (!isSaved) {
       props.handleSave(e, data);
       setSaved(true);
@@ -41,12 +46,12 @@ function ArticleCard(props) {
   }
 
 
-  const { data, savedArticles, isOnMain } = props;
+  const { data, savedArticles, isOnMain, isLoggedIn } = props;
   const publishedAt = formatDate(new Date(data.publishedAt));
   const author = formatAuthor(data.author);
   const [suggestionVisible, setSuggestionVisible] = useState(false);
 
-  const savedData = isOnMain ? 
+  const savedData = isOnMain && isLoggedIn ? 
     savedArticles
       .find((article) => article.url === data.url)
     : undefined;
