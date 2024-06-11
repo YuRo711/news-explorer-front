@@ -30,26 +30,26 @@ function App(props) {
 
   function getSavedArticles() {
     userApi.getArticles()
-    .then((res) => {
-      const json = res.data.map((data) => {
-        const newData = 
-          {
-            _id: data._id,
-            keyword: data.keyword.charAt(0).toUpperCase() + data.keyword.slice(1),
-            title: data.title,
-            description: data.text,
-            publishedAt: data.date,
-            author: data.source,
-            url: data.link,
-            urlToImage: data.image,
-        };
-        return newData;
+      .then((res) => {
+        const json = res.data.map((data) => {
+          const newData = 
+            {
+              _id: data._id,
+              keyword: data.keyword.charAt(0).toUpperCase() + data.keyword.slice(1),
+              title: data.title,
+              description: data.text,
+              publishedAt: data.date,
+              author: data.source,
+              url: data.link,
+              urlToImage: data.image,
+          };
+          return newData;
+        });
+        return json;
+      })
+        .then((json) => {
+          setArticles(json);
       });
-      return json;
-    })
-      .then((json) => {
-        setArticles(json);
-    });
   }
 
   function handleSave(event, cardData) {
@@ -110,6 +110,7 @@ function App(props) {
       .then(() => {
         if (keyword) {
           getNews(keyword);
+          getSavedArticles();
         }
       });
   }
