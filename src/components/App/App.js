@@ -12,6 +12,7 @@ import LoginModal from "../Modals/LoginModal/LoginModal.js";
 import { userApi } from "../../utils/mainApi.js";
 import { getToken, removeToken, setToken } from "../../utils/token.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 
 function App(props) {
   //#region Methods
@@ -161,6 +162,10 @@ function App(props) {
       }
   }, []);
 
+  useEffect(() => {
+    getSavedArticles();
+  }, [currentUser])
+
   //#endregion
 
 
@@ -177,12 +182,14 @@ function App(props) {
       />
       <Routes>
         <Route path="/saved" element={
-          <Saved
-            isLoggedIn={isLoggedIn}
-            handleArticleClick={handleArticleClick}
-            handleDelete={handleDelete}
-            articles={articles}
-          />
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <Saved
+              isLoggedIn={isLoggedIn}
+              handleArticleClick={handleArticleClick}
+              handleDelete={handleDelete}
+              articles={articles}
+            />
+          </ProtectedRoute>
         }/>
         <Route path="/" element={
           <Main

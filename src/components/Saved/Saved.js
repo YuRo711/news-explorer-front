@@ -27,10 +27,6 @@ function Saved(props) {
 
   return (
     <main className="saved">
-      {
-      props.isLoggedIn ? "" :
-      <Navigate to="/"/>
-      }
       <div className="saved__info">
         <h3 className="saved__subtitle">Saved articles</h3>
         <h2 className="saved__title">
