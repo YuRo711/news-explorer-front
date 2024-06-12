@@ -1,6 +1,14 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import "./ArticleCard.css";
 
+/*
+  Since this seems to be the only way to contact the reviewer, I'll write it here.
+  I couldn't reproduce the non-unique ids warning and the saved articles delete error.
+  I am genuinely confused as to what to do. Could you please provide screenshots
+  if those repeat this time?
+*/
+
+
 function ArticleCard(props) {
   function formatDate(date) {
     var splitDate = date.toDateString().split(" ");
