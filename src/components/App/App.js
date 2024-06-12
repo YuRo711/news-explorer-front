@@ -28,13 +28,13 @@ function App(props) {
     }
   }
 
-  function getSavedArticles() {
+  async function getSavedArticles() {
     if (!isLoggedIn) {
       setArticles(null);
       return;
     }
     
-    userApi.getArticles()
+    return userApi.getArticles()
       .then((res) => {
         const json = res.data.map((data) => {
           const newData = 
@@ -54,24 +54,26 @@ function App(props) {
       })
       .then((json) => {
         setArticles(json);
+        return json;
       });
   }
 
-  function handleSave(event, cardData) {
+  async function handleSave(event, cardData) {
     event.stopPropagation();
-    userApi.saveArticle(
-      { 
-        keyword,
-        title: cardData.title,
-        text: cardData.description || "[Empty]",
-        date: cardData.publishedAt,
-        source: cardData.author || "Unknown",
-        link: cardData.url,
-        image: cardData.urlToImage,
-    });
+    const data = { 
+      keyword,
+      title: cardData.title,
+      text: cardData.description || "[Empty]",
+      date: cardData.publishedAt,
+      source: cardData.author || "Unknown",
+      link: cardData.url,
+      image: cardData.urlToImage,
+    };
+    return userApi.saveArticle(data)
+      .then(getSavedArticles);
   }
 
-  function handleDelete(event, cardData) {
+  async function handleDelete(event, cardData) {
     event.stopPropagation();
     userApi.deleteArticle(cardData._id)
       .then(() => {

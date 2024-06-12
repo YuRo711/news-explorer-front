@@ -37,11 +37,19 @@ function ArticleCard(props) {
     }
 
     if (!isSaved) {
-      props.handleSave(e, data);
-      setSaved(true);
+      props.handleSave(e, data)
+        .then((saved) => {
+          setSaved(true);
+          setSavedData(
+            saved
+              .find((article) => article.url === data.url)
+          );
+        })
     } else {
-      props.handleDelete(e, savedData);
-      setSaved(false);
+      props.handleDelete(e, savedData)
+        .then(() => {
+          setSaved(false);
+        })
     }
   }
 
@@ -50,19 +58,17 @@ function ArticleCard(props) {
   const publishedAt = formatDate(new Date(data.publishedAt));
   const author = formatAuthor(data.author);
   const [suggestionVisible, setSuggestionVisible] = useState(false);
+  const [savedData, setSavedData] = useState(undefined);
+  const [isSaved, setSaved] = useState(false);
 
-  const savedData = savedArticles ? 
-    savedArticles
-      .find((article) => article.url === data.url)
-    : undefined;
-  const [isSaved, setSaved] = useState(savedData !== undefined);
-
-  useEffect(() => {const savedData = savedArticles ? 
-    savedArticles
-      .find((article) => article.url === data.url)
-    : undefined;
-    setSaved(savedData !== undefined);
-  }, [savedArticles])
+  useEffect(() => {
+    const cardData = savedArticles ? 
+      savedArticles
+        .find((article) => article.url === data.url)
+      : undefined;
+    setSavedData(cardData);
+    setSaved(cardData !== undefined);
+  }, [isLoggedIn]);
 
 
   return (
