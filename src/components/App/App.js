@@ -29,6 +29,11 @@ function App(props) {
   }
 
   function getSavedArticles() {
+    if (!isLoggedIn) {
+      setArticles(null);
+      return;
+    }
+    
     userApi.getArticles()
       .then((res) => {
         const json = res.data.map((data) => {
@@ -47,8 +52,8 @@ function App(props) {
         });
         return json;
       })
-        .then((json) => {
-          setArticles(json);
+      .then((json) => {
+        setArticles(json);
       });
   }
 
@@ -95,7 +100,7 @@ function App(props) {
     return userApi.addUser({ name, email, password })
       .then((res) => {
         setToken(res.token);
-        setIsLoggedIn(true);
+        auth(res.token);
         handleModalClose("signup");
       });
   }
@@ -104,7 +109,7 @@ function App(props) {
     return userApi.signIn({ email, password })
       .then((res) => {
         setToken(res.token);
-        setIsLoggedIn(true);
+        auth(res.token);
         handleModalClose("login");
       })
       .then(() => {
@@ -119,6 +124,17 @@ function App(props) {
     removeToken();
     setIsLoggedIn(false);
     setArticles(null);
+  }
+
+  function auth(token) {
+    userApi.auth(token)
+      .then((res) => {
+        userApi.setTokenHeader(token);
+        setCurrentUser(res.data);
+        setIsLoggedIn(true);
+        getSavedArticles();
+      })
+      .catch((err) => { console.log(err) });
   }
 
   //#endregion
@@ -143,14 +159,7 @@ function App(props) {
   useEffect(() => {
     const token = getToken();
     if (token) {
-      userApi.auth(token)
-        .then((res) => {
-          userApi.setTokenHeader(token);
-          setCurrentUser(res.data);
-          setIsLoggedIn(true);
-          getSavedArticles();
-        })
-        .catch((err) => { console.log(err) });
+      auth(token);
     }
     
     window.addEventListener("resize", () => {
