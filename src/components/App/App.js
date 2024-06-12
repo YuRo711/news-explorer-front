@@ -207,6 +207,7 @@ function App(props) {
           <Main
             getNews={getNews}
             news={news}
+            openLoginModal={() => handleModalOpen("login")}
             isSearching={isSearching}
             isLoggedIn={isLoggedIn}
             handleSave={handleSave}

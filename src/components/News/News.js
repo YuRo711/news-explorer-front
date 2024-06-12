@@ -45,6 +45,7 @@ function News(props) {
         isOnMain={isOnMain}
         isLoggedIn={props.isLoggedIn}
         savedArticles={props.savedArticles}
+        openLoginModal={props.openLoginModal}
       />
     </section>
   );

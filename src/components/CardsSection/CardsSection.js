@@ -32,6 +32,7 @@ function CardsSection(props) {
                 handleArticleClick={props.handleArticleClick}
                 isOnMain={isOnMain}
                 savedArticles={props.savedArticles}
+                openLoginModal={props.openLoginModal}
               />
             ))
         }

@@ -33,6 +33,7 @@ function ArticleCard(props) {
   function handleSave(e, data) {
     if (!isLoggedIn) {
       e.stopPropagation();
+      props.openLoginModal();
       return;
     }
 

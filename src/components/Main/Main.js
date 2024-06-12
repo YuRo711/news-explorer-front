@@ -17,6 +17,7 @@ function Main(props) {
         handleDelete={props.handleDelete}
         handleArticleClick={props.handleArticleClick}
         savedArticles={props.savedArticles}
+        openLoginModal={props.openLoginModal}
       />
       <Author />
     </main>
