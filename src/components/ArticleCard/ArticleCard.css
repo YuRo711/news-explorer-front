@@ -74,7 +74,7 @@
   width: 40px;
   height: 40px;
   top: 24px;
-  right: 32px;
+  right: 24px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -116,7 +116,7 @@
   width: 182px;
   height: 40px;
   top: 24px;
-  left: 149px;
+  right: 69px;
   border-radius: 8px;
   box-shadow: 0 10px 22px #3B4A741A;
   background-color: #FFF;
@@ -193,6 +193,12 @@
     top: 8px;
     left: 8px;
   }
+
+  .card__suggestion {
+    top: 8px;
+    right: 56px;
+    width: 150px;
+  }
 }
 
 @media screen and (min-width: 600px) and (max-width: 720px) {
@@ -241,5 +247,11 @@
   .card__tag {
     top: 16px;
     left: 16px;
+  }
+
+  .card__suggestion {
+    top: 16px;
+    right: 64px;
+    width: 150px;
   }
 }
