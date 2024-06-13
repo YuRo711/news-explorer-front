@@ -58,8 +58,7 @@ function App(props) {
       });
   }
 
-  async function handleSave(event, cardData) {
-    event.stopPropagation();
+  async function handleSave(cardData) {
     const data = { 
       keyword,
       title: cardData.title,
@@ -207,7 +206,7 @@ function App(props) {
           <Main
             getNews={getNews}
             news={news}
-            openLoginModal={() => handleModalOpen("login")}
+            openLoginModal={() => handleModalOpen("signup")}
             isSearching={isSearching}
             isLoggedIn={isLoggedIn}
             handleSave={handleSave}

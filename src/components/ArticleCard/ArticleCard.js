@@ -39,14 +39,14 @@ function ArticleCard(props) {
   }
 
   function handleSave(e, data) {
+    e.stopPropagation();
     if (!isLoggedIn) {
-      e.stopPropagation();
       props.openLoginModal();
       return;
     }
 
     if (!isSaved) {
-      props.handleSave(e, data)
+      props.handleSave(data)
         .then((saved) => {
           setSaved(true);
           setSavedData(
