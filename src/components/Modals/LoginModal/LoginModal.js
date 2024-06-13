@@ -46,7 +46,7 @@ function LoginModal(props) {
       <label className="modal__label"><p className="modal__label-text">Email</p>
         <input className="modal__input"
           type="text"
-          id="email"
+          id="login-email"
           placeholder="Enter email"
           onChange={(e) => {
             setEmail(e.target.value);
@@ -60,7 +60,7 @@ function LoginModal(props) {
       <label className="modal__label"><p className="modal__label-text">Password</p>
         <input className="modal__input"
           type="password"
-          id="password"
+          id="login-password"
           placeholder="Enter password"
           onChange={(e) => {
             setPassword(e.target.value);

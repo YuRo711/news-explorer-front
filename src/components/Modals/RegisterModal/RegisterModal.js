@@ -47,7 +47,7 @@ function RegisterModal(props) {
       <label className="modal__label"><p className="modal__label-text">Email</p>
         <input className="modal__input"
           type="email"
-          id="email"
+          id="signup-email"
           placeholder="Enter email"
           onChange={(e) => {
             setEmail(e.target.value);
@@ -61,7 +61,7 @@ function RegisterModal(props) {
       <label className="modal__label"><p className="modal__label-text">Password</p>
         <input className="modal__input"
           type="password"
-          id="password"
+          id="signup-password"
           placeholder="Enter password"
           onChange={(e) => {
             setPassword(e.target.value);
@@ -75,7 +75,7 @@ function RegisterModal(props) {
       <label className="modal__label"><p className="modal__label-text">Username</p>
         <input className="modal__input"
           type="text"
-          id="username"
+          id="signup-username"
           placeholder="Enter your username"
           onChange={(e) => {
             setName(e.target.value);
