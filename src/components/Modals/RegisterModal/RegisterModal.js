@@ -55,7 +55,7 @@ function RegisterModal(props) {
           }}
           required
         />
-        <p className="modal__error" id="email-error"></p>
+        <p className="modal__error" id="signup-email-error"></p>
       </label>
 
       <label className="modal__label"><p className="modal__label-text">Password</p>
@@ -69,7 +69,7 @@ function RegisterModal(props) {
           }}
           required
         />
-        <p className="modal__error" id="password-error"></p>
+        <p className="modal__error" id="signup-password-error"></p>
       </label>
 
       <label className="modal__label"><p className="modal__label-text">Username</p>
@@ -83,7 +83,7 @@ function RegisterModal(props) {
           }}
           required
         />
-        <p className="modal__error" id="username-error"></p>
+        <p className="modal__error" id="signup-username-error"></p>
       </label>
     </FormModal>
   );

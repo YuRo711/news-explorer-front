@@ -54,7 +54,7 @@ function LoginModal(props) {
           }}
           required
         />
-        <p className="modal__error" id="email-error"></p>
+        <p className="modal__error" id="login-email-error"></p>
       </label>
 
       <label className="modal__label"><p className="modal__label-text">Password</p>
@@ -68,7 +68,7 @@ function LoginModal(props) {
           }}
           required
         />
-        <p className="modal__error" id="password-error"></p>
+        <p className="modal__error" id="login-password-error"></p>
       </label>
     </FormModal>
   );
