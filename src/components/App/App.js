@@ -145,6 +145,10 @@ function App(props) {
       });
   }
 
+  function checkMobile() {
+    setIsOnMobile(window.innerWidth < 600);
+  }
+
   //#endregion
 
   //#region Variables setup
@@ -168,14 +172,8 @@ function App(props) {
       auth(token);
     }
 
-    window.addEventListener("resize", () => {
-      setIsOnMobile(window.innerWidth < 600);
-    });
-    return () => {
-      window.removeEventListener("resize", () => {
-        setIsOnMobile(window.innerWidth < 600);
-      });
-    };
+    window.addEventListener("resize", () => checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
