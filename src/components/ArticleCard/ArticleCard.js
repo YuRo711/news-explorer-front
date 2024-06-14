@@ -8,24 +8,21 @@ import "./ArticleCard.css";
   if those repeat this time?
 */
 
-
 function ArticleCard(props) {
   function formatDate(date) {
     var splitDate = date.toDateString().split(" ");
-    var day = splitDate[2].startsWith("0") ?
-      splitDate[2].substring(1) : splitDate[2];
-      
+    var day = splitDate[2].startsWith("0")
+      ? splitDate[2].substring(1)
+      : splitDate[2];
+
     return `${splitDate[1]} ${day}, ${splitDate[3]}`;
   }
 
   function formatAuthor(author) {
-    if (!author)
-      return "";
+    if (!author) return "";
     var splitAuthor = author.split(", ");
-    if (splitAuthor.length === 1)
-      return author;
-    return splitAuthor[0] === splitAuthor[1] ?
-      splitAuthor[0] : author;
+    if (splitAuthor.length === 1) return author;
+    return splitAuthor[0] === splitAuthor[1] ? splitAuthor[0] : author;
   }
 
   function showSuggestion() {
@@ -46,22 +43,16 @@ function ArticleCard(props) {
     }
 
     if (!isSaved) {
-      props.handleSave(data)
-        .then((saved) => {
-          setSaved(true);
-          setSavedData(
-            saved
-              .find((article) => article.url === data.url)
-          );
-        })
+      props.handleSave(data).then((saved) => {
+        setSaved(true);
+        setSavedData(saved.find((article) => article.url === data.url));
+      });
     } else {
-      props.handleDelete(e, savedData)
-        .then(() => {
-          setSaved(false);
-        })
+      props.handleDelete(e, savedData).then(() => {
+        setSaved(false);
+      });
     }
   }
-
 
   const { data, savedArticles, isOnMain, isLoggedIn } = props;
   const publishedAt = formatDate(new Date(data.publishedAt));
@@ -71,55 +62,44 @@ function ArticleCard(props) {
   const [isSaved, setSaved] = useState(false);
 
   useEffect(() => {
-    const cardData = savedArticles ? 
-      savedArticles
-        .find((article) => article.url === data.url)
+    const cardData = savedArticles
+      ? savedArticles.find((article) => article.url === data.url)
       : undefined;
     setSavedData(cardData);
     setSaved(cardData !== undefined);
   }, [isLoggedIn]);
 
-
   return (
-    <div className="card"
-      onClick={() => props.handleArticleClick(data.url)}
-    >
-      <button className={`card__button 
-          ${isOnMain ? 
-            (`card__button_type_save 
-              ${isSaved ? "card__button_type_save_saved" : ""}`) 
-            : "card__button_type_delete"
+    <div className="card" onClick={() => props.handleArticleClick(data.url)}>
+      <button
+        className={`card__button 
+          ${
+            isOnMain
+              ? `card__button_type_save 
+              ${isSaved ? "card__button_type_save_saved" : ""}`
+              : "card__button_type_delete"
           }
         `}
         type="button"
         onMouseEnter={showSuggestion}
         onMouseLeave={hideSuggestion}
         onClick={(e) => {
-          isOnMain ?
-            handleSave(e, data) :
-            props.handleDelete(e, data)
+          isOnMain ? handleSave(e, data) : props.handleDelete(e, data);
         }}
       />
-      <div className={suggestionVisible ? 
-        "card__suggestion card__suggestion_visible" : "card__suggestion"}>
-          {
-          isOnMain ?
-            "Sign in to save articles" :
-            "Remove from saved"
-          }
+      <div
+        className={
+          suggestionVisible
+            ? "card__suggestion card__suggestion_visible"
+            : "card__suggestion"
+        }
+      >
+        {isOnMain ? "Sign in to save articles" : "Remove from saved"}
       </div>
 
-      {
-        isOnMain ? "" :
-        <div className="card__tag">
-          {data.keyword}
-        </div>
-      }
+      {isOnMain ? "" : <div className="card__tag">{data.keyword}</div>}
 
-      <img className="card__image"
-        src={data.urlToImage}
-        alt="article cover"
-      />
+      <img className="card__image" src={data.urlToImage} alt="article cover" />
 
       <div className="card__info">
         <p className="card__date">{publishedAt}</p>

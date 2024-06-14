@@ -5,23 +5,23 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Saved(props) {
-
   function getKeywords(articles) {
-    if (!articles)
-      return;
+    if (!articles) return;
 
-    const keywords = articles
-      .map((data) => data.keyword );
-    const uniqueKeywords = keywords
-      .filter((word, i) => keywords.indexOf(word) === i);
+    const keywords = articles.map((data) => data.keyword);
+    const uniqueKeywords = keywords.filter(
+      (word, i) => keywords.indexOf(word) === i,
+    );
 
-    return uniqueKeywords
-      .filter((keyword, i) => i < 2)
-      .join(", ") +
-      (uniqueKeywords.length < 3 ? "" : `, and ${uniqueKeywords.length - 2} other`);
+    return (
+      uniqueKeywords.filter((keyword, i) => i < 2).join(", ") +
+      (uniqueKeywords.length < 3
+        ? ""
+        : `, and ${uniqueKeywords.length - 2} other`)
+    );
   }
 
-	const currentUser = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
   const username = currentUser.name;
   const keywords = getKeywords(props.articles);
 
@@ -34,7 +34,7 @@ function Saved(props) {
           {props.articles.length !== 1 ? "s" : ""}
         </h2>
         <p className="saved__keywords">
-          By keywords: 
+          By keywords:
           <span className="saved__keyword"> {keywords}</span>
         </p>
       </div>
@@ -47,6 +47,5 @@ function Saved(props) {
     </main>
   );
 }
-  
+
 export default Saved;
-  

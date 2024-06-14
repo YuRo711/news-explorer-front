@@ -6,20 +6,24 @@
   left: 0;
   z-index: 3;
   background-color: rgba(0, 0, 0, 0.5);
-  color: #FFF;
+  color: #fff;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s 0.3s, opacity 0.3s linear;
+  transition:
+    visibility 0s 0.3s,
+    opacity 0.3s linear;
 }
 
 .menu__opened {
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s, opacity 0.3s linear;
+  transition:
+    visibility 0s,
+    opacity 0.3s linear;
 }
 
 .menu__container {
-  background-color: #1A1B22;
+  background-color: #1a1b22;
   border-radius: 0 0 16px 16px;
 }
 
@@ -33,7 +37,7 @@
 
 .menu__close-button {
   background: none;
-  background-image: url('../../images/close.svg');
+  background-image: url("../../images/close.svg");
   background-size: cover;
   border: none;
   width: 24px;
@@ -52,12 +56,12 @@
 }
 
 .menu__link {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 56px;
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
 }
 
 .menu__button {
@@ -66,9 +70,9 @@
   width: 100%;
   height: 56px;
   border-radius: 28px;
-  border: 1px solid #FFF;
-  color: #FFF;
-  font-family: 'Roboto', Arial, sans-serif;
+  border: 1px solid #fff;
+  color: #fff;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;

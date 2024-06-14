@@ -2,7 +2,7 @@
   width: 400px;
   height: 576px;
   border-radius: 8px;
-  background-color: #FFF;
+  background-color: #fff;
   overflow: hidden;
   cursor: pointer;
   position: relative;
@@ -25,15 +25,15 @@
 
 .card__date {
   margin: 0;
-  font-family: 'SourceSans', sans-serif;
+  font-family: "SourceSans", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
-  color: #B6BCBF;
+  color: #b6bcbf;
 }
 
 .card__title {
-  font-family: 'RobotoSlab', Courier, monospace;
+  font-family: "RobotoSlab", Courier, monospace;
   font-size: 26px;
   font-weight: 400;
   line-height: 30px;
@@ -46,11 +46,11 @@
 }
 
 .card__description {
-  font-family: 'Roboto', Arial, sans-serif, Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
-  margin: 16px 0 0 ;
+  margin: 16px 0 0;
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
@@ -59,12 +59,12 @@
 }
 
 .card__author {
-  font-family: 'RobotoSlab', Courier, monospace;
+  font-family: "RobotoSlab", Courier, monospace;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
   letter-spacing: 0.4px;
-  color: #B6BCBF;
+  color: #b6bcbf;
   text-transform: uppercase;
   margin-top: auto;
 }
@@ -83,33 +83,32 @@
 /* All the states are down here. card__button is a parent class for save and delete buttons. */
 
 .card__button_type_save {
-  background-image: url('../../images/save.svg');
+  background-image: url("../../images/save.svg");
 }
 
 .card__button_type_save:hover {
-  background-image: url('../../images/save\ hover.svg');
+  background-image: url("../../images/save\ hover.svg");
 }
 
 .card__button_type_save:active {
-  background-image: url('../../images/save\ saved.svg');
+  background-image: url("../../images/save\ saved.svg");
 }
 
 .card__button_type_save_saved {
-  background-image: url('../../images/save\ saved.svg');  
+  background-image: url("../../images/save\ saved.svg");
 }
 
 .card__button_saved {
-  background-image: url('../../images/save\ saved.svg');
+  background-image: url("../../images/save\ saved.svg");
 }
 
 .card__button_type_delete {
-  background-image: url('../../images/delete.svg');
+  background-image: url("../../images/delete.svg");
 }
 
 .card__button_type_delete:hover {
-  background-image: url('../../images/delete\ hover.svg');
+  background-image: url("../../images/delete\ hover.svg");
 }
-
 
 .card__suggestion {
   position: absolute;
@@ -118,9 +117,9 @@
   top: 24px;
   right: 69px;
   border-radius: 8px;
-  box-shadow: 0 10px 22px #3B4A741A;
-  background-color: #FFF;
-  font-family: 'Roboto', Arial, sans-serif;
+  box-shadow: 0 10px 22px #3b4a741a;
+  background-color: #fff;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   display: flex;
@@ -141,9 +140,9 @@
   height: 40px;
   padding: 0 22px;
   border-radius: 8px;
-  box-shadow: 0 10px 22px #3B4A741A;
-  background-color: #FFF;
-  font-family: 'Roboto', Arial, sans-serif;
+  box-shadow: 0 10px 22px #3b4a741a;
+  background-color: #fff;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   display: flex;
@@ -151,13 +150,12 @@
   align-items: center;
 }
 
-
 @media screen and (min-width: 600px) and (max-width: 1300px) {
   .card {
     width: 224px;
     height: 420px;
   }
-  
+
   .card__image {
     max-height: 150px;
   }
@@ -181,7 +179,7 @@
   .card__author {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;
   }
 
   .card__button {
@@ -230,13 +228,13 @@
 
   .card__description {
     -webkit-line-clamp: 4;
-    margin: 10px 0 0 ;
+    margin: 10px 0 0;
   }
 
   .card__author {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;
   }
 
   .card__button {

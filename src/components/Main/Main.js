@@ -5,10 +5,7 @@ import Search from "../Search/Search";
 function Main(props) {
   return (
     <main className="main">
-      <Search 
-        getNews={props.getNews}
-        isOnMobile={props.isOnMobile}
-      />
+      <Search getNews={props.getNews} isOnMobile={props.isOnMobile} />
       <News
         news={props.news}
         isSearching={props.isSearching}

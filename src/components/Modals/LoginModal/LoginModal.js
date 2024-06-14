@@ -3,7 +3,6 @@ import FormModal from "../FormModal/FormModal";
 import { FormValidator } from "../../../utils/FormValidator";
 
 function LoginModal(props) {
-
   function enableValidation() {
     const formElement = formRef.current;
     const newValidator = new FormValidator(formElement, setButtonActivity);
@@ -18,7 +17,6 @@ function LoginModal(props) {
   function submit() {
     props.signIn(email, password);
   }
-
 
   const [isButtonActive, setButtonActivity] = useState(false);
   const [validator, setValidator] = useState(null);
@@ -43,8 +41,10 @@ function LoginModal(props) {
       isButtonActive={isButtonActive}
       onSubmit={submit}
     >
-      <label className="modal__label"><p className="modal__label-text">Email</p>
-        <input className="modal__input"
+      <label className="modal__label">
+        <p className="modal__label-text">Email</p>
+        <input
+          className="modal__input"
           type="text"
           id="login-email"
           placeholder="Enter email"
@@ -58,8 +58,10 @@ function LoginModal(props) {
         <p className="modal__error" id="login-email-error"></p>
       </label>
 
-      <label className="modal__label"><p className="modal__label-text">Password</p>
-        <input className="modal__input"
+      <label className="modal__label">
+        <p className="modal__label-text">Password</p>
+        <input
+          className="modal__input"
           type="password"
           id="login-password"
           placeholder="Enter password"

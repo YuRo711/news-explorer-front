@@ -2,22 +2,22 @@ import { apiKey } from "./constants";
 
 class NewsApi {
   constructor() {
-    this.newsBaseUrl = 
+    this.newsBaseUrl =
       "https://nomoreparties.co/news/v2/everything?language=en&";
   }
-  
+
   async getNews(query) {
-    return fetch(this.newsBaseUrl + 
-      `q=${query}&apiKey=${apiKey}&pageSize=100&from=${this._getRecentDate()}`,
-      { method: "GET" }
-    )
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject("something went wrong");
-        };
-      });
+    return fetch(
+      this.newsBaseUrl +
+        `q=${query}&apiKey=${apiKey}&pageSize=100&from=${this._getRecentDate()}`,
+      { method: "GET" },
+    ).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        return Promise.reject("something went wrong");
+      }
+    });
   }
 
   _getRecentDate() {

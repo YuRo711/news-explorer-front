@@ -13,11 +13,11 @@
 
 .header_page_main {
   box-shadow: 0 1px rgba(255, 255, 255, 0.2);
-  color: #FFF;
+  color: #fff;
 }
 
 .header__title {
-  font-family: 'RobotoSlab', Helvetica, sans-serif;
+  font-family: "RobotoSlab", Helvetica, sans-serif;
   font-size: 20px;
   line-height: 24px;
   font-weight: 700;
@@ -40,7 +40,7 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  font-family: 'Roboto', Arial, sans-serif, Helvetica, sans-serif;
+  font-family: "Roboto", Arial, sans-serif, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 18px;
   color: #000;
@@ -52,12 +52,12 @@
 }
 
 .header__link-button_chosen.header__link-button_page_main {
-  border-bottom: solid 3px #FFF;
-  color: #FFF;
+  border-bottom: solid 3px #fff;
+  color: #fff;
 }
 
 .header__link-button_page_main {
-  color: #B6BCBF;
+  color: #b6bcbf;
 }
 
 .header__button {
@@ -66,7 +66,7 @@
   border: solid 1px #000;
   border-radius: 24px;
   background: none;
-  font-family: 'Roboto', Arial, sans-serif, Helvetica, sans-serif;
+  font-family: "Roboto", Arial, sans-serif, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 18px;
   color: #000;
@@ -86,8 +86,8 @@
 }
 
 .header__button_page_main {
-  border: solid 1px #FFF;
-  color: #FFF;
+  border: solid 1px #fff;
+  color: #fff;
 }
 
 .header__button-icon {
@@ -104,13 +104,12 @@
 }
 
 .header__menu-button_white {
-  background-image: url('../../images/menu\ white.svg');
+  background-image: url("../../images/menu\ white.svg");
 }
 
 .header__menu-button_black {
-  background-image: url('../../images/menu\ black.svg');
+  background-image: url("../../images/menu\ black.svg");
 }
-
 
 @media screen and (min-width: 600px) and (max-width: 1300px) {
   .header {
@@ -126,7 +125,7 @@
     font-size: 16px;
     height: 66px;
   }
-  
+
   .header__button {
     margin-left: 28px;
     height: 40px;

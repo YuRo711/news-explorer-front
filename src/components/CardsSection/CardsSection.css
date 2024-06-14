@@ -9,7 +9,7 @@
 }
 
 .cards__title {
-  font-family: 'RobotoSlab', Courier, monospace;
+  font-family: "RobotoSlab", Courier, monospace;
   font-size: 40px;
   font-weight: 400;
   line-height: 46px;
@@ -26,10 +26,10 @@
 .cards__expand-button {
   width: 288px;
   height: 64px;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
-  background-color: #FFF;
+  background-color: #fff;
   border: none;
   border-radius: 32px;
   margin: 64px auto 0;
@@ -38,9 +38,8 @@
 }
 
 .cards__expand-button:hover {
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
 }
-
 
 @media screen and (min-width: 600px) and (max-width: 1300px) {
   .cards {

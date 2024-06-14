@@ -11,11 +11,14 @@ function News(props) {
   }
   const isOnMain = path === "/";
 
-  
   if (!props.news) {
     return (
       <section className="news news_result_loading">
-        <img className="news__loading-icon" src={loadingIcon} alt="loading icon"/>
+        <img
+          className="news__loading-icon"
+          src={loadingIcon}
+          alt="loading icon"
+        />
         <p className="news__loading-text">Searching for news...</p>
       </section>
     );
@@ -24,12 +27,16 @@ function News(props) {
   if (props.news.length === 0) {
     return (
       <section className="news news_result_none">
-        <img className="news__not-found-icon" src={notFoundIcon} alt="not found icon"/>
+        <img
+          className="news__not-found-icon"
+          src={notFoundIcon}
+          alt="not found icon"
+        />
         <h2 className="news__not-found-title">Nothing found</h2>
         <p className="news__not-found-text">
-          {isOnMain ? 
-            "Sorry, but nothing matched your search terms." : 
-            "No saved articles yet."}
+          {isOnMain
+            ? "Sorry, but nothing matched your search terms."
+            : "No saved articles yet."}
         </p>
       </section>
     );

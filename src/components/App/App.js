@@ -24,9 +24,9 @@ function App(props) {
       setKeyword(query);
       setIsSearching(true);
       api.getNews(query).then((newJson) => {
-          setNews(newJson["articles"]);
-          setIsSearching(false);
-        });
+        setNews(newJson["articles"]);
+        setIsSearching(false);
+      });
     }
   }
 
@@ -35,20 +35,21 @@ function App(props) {
       setArticles(null);
       return;
     }
-    
-    return userApi.getArticles()
+
+    return userApi
+      .getArticles()
       .then((res) => {
         const json = res.data.map((data) => {
-          const newData = 
-            {
-              _id: data._id,
-              keyword: data.keyword.charAt(0).toUpperCase() + data.keyword.slice(1),
-              title: data.title,
-              description: data.text,
-              publishedAt: data.date,
-              author: data.source,
-              url: data.link,
-              urlToImage: data.image,
+          const newData = {
+            _id: data._id,
+            keyword:
+              data.keyword.charAt(0).toUpperCase() + data.keyword.slice(1),
+            title: data.title,
+            description: data.text,
+            publishedAt: data.date,
+            author: data.source,
+            url: data.link,
+            urlToImage: data.image,
           };
           return newData;
         });
@@ -61,7 +62,7 @@ function App(props) {
   }
 
   async function handleSave(cardData) {
-    const data = { 
+    const data = {
       keyword,
       title: cardData.title,
       text: cardData.description || "[Empty]",
@@ -70,46 +71,47 @@ function App(props) {
       link: cardData.url,
       image: cardData.urlToImage,
     };
-    return userApi.saveArticle(data)
-      .then(getSavedArticles);
+    return userApi.saveArticle(data).then(getSavedArticles);
   }
 
   async function handleDelete(event, cardData) {
     event.stopPropagation();
-    userApi.deleteArticle(cardData._id)
-      .then(() => {
-        setArticles(articles.filter((data) => data._id !== cardData._id));
-      });
+    userApi.deleteArticle(cardData._id).then(() => {
+      setArticles(articles.filter((data) => data._id !== cardData._id));
+    });
   }
 
   function handleArticleClick(url) {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, "_blank", "noopener,noreferrer");
   }
 
   function handleModalClose(modalId) {
-    setModalsActivity({...modalsActivity, [modalId]: false});
+    setModalsActivity({ ...modalsActivity, [modalId]: false });
   }
 
   function handleModalOpen(modalId) {
-    setModalsActivity({...modalsActivity, [modalId]: true});
+    setModalsActivity({ ...modalsActivity, [modalId]: true });
   }
 
   function openAnotherModal(modalId, newModalId) {
-    setModalsActivity({...modalsActivity, 
-      [modalId]: false, [newModalId]: true});
+    setModalsActivity({
+      ...modalsActivity,
+      [modalId]: false,
+      [newModalId]: true,
+    });
   }
 
   async function registerUser(name, email, password) {
-    return userApi.addUser({ name, email, password })
-      .then((res) => {
-        setToken(res.token);
-        auth(res.token);
-        handleModalClose("signup");
-      });
+    return userApi.addUser({ name, email, password }).then((res) => {
+      setToken(res.token);
+      auth(res.token);
+      handleModalClose("signup");
+    });
   }
 
   async function signIn(email, password) {
-    return userApi.signIn({ email, password })
+    return userApi
+      .signIn({ email, password })
       .then((res) => {
         setToken(res.token);
         auth(res.token);
@@ -130,29 +132,30 @@ function App(props) {
   }
 
   function auth(token) {
-    userApi.auth(token)
+    userApi
+      .auth(token)
       .then((res) => {
         userApi.setTokenHeader(token);
         setCurrentUser(res.data);
         setIsLoggedIn(true);
         getSavedArticles();
       })
-      .catch((err) => { console.log(err) });
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   //#endregion
 
-  
   //#region Variables setup
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [news, setNews] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
   const [modalsActivity, setModalsActivity] = useState({
-    "signup": false,
-    "login": false,
-    "success": false,
-
+    signup: false,
+    login: false,
+    success: false,
   });
   const [currentUser, setCurrentUser] = useState({});
   const [articles, setArticles] = useState(null);
@@ -164,86 +167,89 @@ function App(props) {
     if (token) {
       auth(token);
     }
-    
+
     window.addEventListener("resize", () => {
       setIsOnMobile(window.innerWidth < 600);
     });
     return () => {
       window.removeEventListener("resize", () => {
         setIsOnMobile(window.innerWidth < 600);
-      })
-      }
+      });
+    };
   }, []);
 
   useEffect(() => {
     getSavedArticles();
-  }, [currentUser])
+  }, [currentUser]);
 
   //#endregion
-
 
   //#region Rendering
 
   return (
     <div className="page">
-    <CurrentUserContext.Provider value={currentUser}>
-      <Header
-        isLoggedIn={isLoggedIn}
-        openLoginModal={() => handleModalOpen("login")}
-        isOnMobile={isOnMobile}
-        logOut={logOut}
-      />
-      <Routes>
-        <Route path="/saved" element={
-          <ProtectedRoute isLoggedIn={isLoggedIn}>
-            <Saved
-              isLoggedIn={isLoggedIn}
-              handleArticleClick={handleArticleClick}
-              handleDelete={handleDelete}
-              articles={articles}
-            />
-          </ProtectedRoute>
-        }/>
-        <Route path="/" element={
-          <Main
-            getNews={getNews}
-            news={news}
-            openLoginModal={() => handleModalOpen("signup")}
-            isSearching={isSearching}
-            isLoggedIn={isLoggedIn}
-            handleSave={handleSave}
-            handleDelete={handleDelete}
-            handleArticleClick={handleArticleClick}
-            isOnMobile={isOnMobile}
-            savedArticles={articles}
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header
+          isLoggedIn={isLoggedIn}
+          openLoginModal={() => handleModalOpen("login")}
+          isOnMobile={isOnMobile}
+          logOut={logOut}
+        />
+        <Routes>
+          <Route
+            path="/saved"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Saved
+                  isLoggedIn={isLoggedIn}
+                  handleArticleClick={handleArticleClick}
+                  handleDelete={handleDelete}
+                  articles={articles}
+                />
+              </ProtectedRoute>
+            }
           />
-        }/>
-        <Route path="*" element={
-          <Navigate to="/" replace/>
-        }/>
-      </Routes>
-      <Footer/>
-      <SuccessModal
-        name="success"
-        onClose={handleModalClose}
-        isOpen={modalsActivity["success"]}
-        openAnotherModal={() => openAnotherModal("success", "login")}
-      />
-      <RegisterModal
-        name="signup"
-        onClose={handleModalClose}
-        isOpen={modalsActivity["signup"]}
-        openAnotherModal={() => openAnotherModal("signup", "login")}
-        registerUser={registerUser}
-      />
-      <LoginModal
-        name="login"
-        onClose={handleModalClose}
-        isOpen={modalsActivity["login"]}
-        openAnotherModal={() => openAnotherModal("login", "signup")}
-        signIn={signIn}
-      />
-    </CurrentUserContext.Provider>
+          <Route
+            path="/"
+            element={
+              <Main
+                getNews={getNews}
+                news={news}
+                openLoginModal={() => handleModalOpen("signup")}
+                isSearching={isSearching}
+                isLoggedIn={isLoggedIn}
+                handleSave={handleSave}
+                handleDelete={handleDelete}
+                handleArticleClick={handleArticleClick}
+                isOnMobile={isOnMobile}
+                savedArticles={articles}
+              />
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <Footer />
+        <SuccessModal
+          name="success"
+          onClose={handleModalClose}
+          isOpen={modalsActivity["success"]}
+          openAnotherModal={() => openAnotherModal("success", "login")}
+        />
+        <RegisterModal
+          name="signup"
+          onClose={handleModalClose}
+          isOpen={modalsActivity["signup"]}
+          openAnotherModal={() => openAnotherModal("signup", "login")}
+          registerUser={registerUser}
+        />
+        <LoginModal
+          name="login"
+          onClose={handleModalClose}
+          isOpen={modalsActivity["login"]}
+          openAnotherModal={() => openAnotherModal("login", "signup")}
+          signIn={signIn}
+        />
+      </CurrentUserContext.Provider>
     </div>
   );
 

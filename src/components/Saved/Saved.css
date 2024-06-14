@@ -3,14 +3,14 @@
 }
 
 .saved__subtitle {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   opacity: 0.5;
 }
 
 .saved__title {
-  font-family: 'RobotoSlab', Courier, monospace;
+  font-family: "RobotoSlab", Courier, monospace;
   font-size: 40px;
   font-weight: 400;
   line-height: 46px;
@@ -19,7 +19,7 @@
 }
 
 .saved__keywords {
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   margin: 30px 0 0;
@@ -29,7 +29,6 @@
   font-weight: bold;
 }
 
-
 @media screen and (min-width: 600px) and (max-width: 1300px) {
   .saved__info {
     padding: 90px 40px 32px;
@@ -38,7 +37,7 @@
   .saved__subtitle {
     font-size: 14px;
   }
-  
+
   .saved__title {
     font-size: 30px;
     font-weight: 400;
@@ -60,7 +59,7 @@
   .saved__subtitle {
     font-size: 14px;
   }
-  
+
   .saved__title {
     font-size: 30px;
     font-weight: 400;

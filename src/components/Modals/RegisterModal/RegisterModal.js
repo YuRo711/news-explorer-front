@@ -3,7 +3,6 @@ import FormModal from "../FormModal/FormModal";
 import { FormValidator } from "../../../utils/FormValidator";
 
 function RegisterModal(props) {
-
   function enableValidation() {
     const formElement = formRef.current;
     const newValidator = new FormValidator(formElement, setButtonActivity);
@@ -19,7 +18,6 @@ function RegisterModal(props) {
     props.registerUser(name, email, password);
   }
 
-  
   const [isButtonActive, setButtonActivity] = useState(false);
   const [validator, setValidator] = useState(null);
   const formRef = useRef();
@@ -44,8 +42,10 @@ function RegisterModal(props) {
       isButtonActive={isButtonActive}
       onSubmit={submit}
     >
-      <label className="modal__label"><p className="modal__label-text">Email</p>
-        <input className="modal__input"
+      <label className="modal__label">
+        <p className="modal__label-text">Email</p>
+        <input
+          className="modal__input"
           type="email"
           id="signup-email"
           placeholder="Enter email"
@@ -59,8 +59,10 @@ function RegisterModal(props) {
         <p className="modal__error" id="signup-email-error"></p>
       </label>
 
-      <label className="modal__label"><p className="modal__label-text">Password</p>
-        <input className="modal__input"
+      <label className="modal__label">
+        <p className="modal__label-text">Password</p>
+        <input
+          className="modal__input"
           type="password"
           id="signup-password"
           placeholder="Enter password"
@@ -74,8 +76,10 @@ function RegisterModal(props) {
         <p className="modal__error" id="signup-password-error"></p>
       </label>
 
-      <label className="modal__label"><p className="modal__label-text">Username</p>
-        <input className="modal__input"
+      <label className="modal__label">
+        <p className="modal__label-text">Username</p>
+        <input
+          className="modal__input"
           type="text"
           id="signup-username"
           placeholder="Enter your username"

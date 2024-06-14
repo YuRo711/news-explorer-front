@@ -8,19 +8,18 @@ class MainApi {
     });
   }
 
-  async _request(url, method, requestBody, headers=this._headers) {
+  async _request(url, method, requestBody, headers = this._headers) {
     return fetch(this._baseUrl + url, {
       method: method,
       headers: headers,
-      body: JSON.stringify(requestBody)
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          return Promise.reject("something went wrong");
-        }
-    })
+      body: JSON.stringify(requestBody),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        return Promise.reject("something went wrong");
+      }
+    });
   }
 
   async addUser(userData) {
@@ -51,7 +50,7 @@ class MainApi {
   setTokenHeader(token) {
     this._headers = new Headers({
       "content-Type": "application/json",
-      "authorization": `Bearer ${token}`,
+      authorization: `Bearer ${token}`,
     });
   }
 }
