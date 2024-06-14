@@ -1,6 +1,6 @@
 import { apiKey } from "./constants";
 
-class newsApi {
+class NewsApi {
   constructor() {
     this.newsBaseUrl = 
       "https://nomoreparties.co/news/v2/everything?language=en&";
@@ -27,4 +27,4 @@ class newsApi {
   }
 }
 
-export const api = new newsApi();
+export const api = new NewsApi();

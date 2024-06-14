@@ -1,6 +1,6 @@
 import { baseUrl } from "./constants";
 
-class mainApi {
+class MainApi {
   constructor() {
     this._baseUrl = baseUrl;
     this._headers = new Headers({
@@ -56,4 +56,4 @@ class mainApi {
   }
 }
 
-export const userApi = new mainApi();
+export const userApi = new MainApi();

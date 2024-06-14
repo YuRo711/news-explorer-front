@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import FormModal from "../FormModal/FormModal";
-import { formValidator } from "../../../utils/formValidator";
+import { FormValidator } from "../../../utils/FormValidator";
 
 function RegisterModal(props) {
 
   function enableValidation() {
     const formElement = formRef.current;
-    const newValidator = new formValidator(formElement, setButtonActivity);
+    const newValidator = new FormValidator(formElement, setButtonActivity);
     newValidator.enableValidation();
     setValidator(newValidator);
   }

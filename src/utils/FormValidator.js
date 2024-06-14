@@ -1,4 +1,4 @@
-export class formValidator {
+export class FormValidator {
     constructor(formElement, setButtonActivity) {
         this._formElement = formElement;
         this._inputFields = Array.from(
