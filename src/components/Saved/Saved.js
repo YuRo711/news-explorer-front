@@ -1,4 +1,3 @@
-import { Navigate } from "react-router-dom";
 import "./Saved.css";
 import News from "../News/News";
 import { useContext } from "react";
