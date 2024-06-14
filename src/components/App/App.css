@@ -1,8 +1,8 @@
 .page {
-    position: relative;
-    min-height: 100vh;
-    max-width: calc(min(1440px, 100vw));
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+  max-width: calc(min(1440px, 100vw));
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }

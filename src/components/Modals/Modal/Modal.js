@@ -23,16 +23,16 @@ function Modal(props) {
   };
 
   return (
-    <div className={isOpen ? 
-          `modal modal_opened` : 
-          `modal`}
-        id={name}
-        onClick={handleOverlay}
+    <div
+      className={isOpen ? `modal modal_opened` : `modal`}
+      id={name}
+      onClick={handleOverlay}
     >
       <div className={`modal__container`}>
         {props.children}
-        
-        <div className="modal__close-button"
+
+        <div
+          className="modal__close-button"
           type="button"
           onClick={() => {
             onClose(name);

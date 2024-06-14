@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import FormModal from "../FormModal/FormModal";
-import { formValidator } from "../../../utils/formValidator";
+import { FormValidator } from "../../../utils/FormValidator";
 
 function RegisterModal(props) {
-
   function enableValidation() {
     const formElement = formRef.current;
-    const newValidator = new formValidator(formElement, setButtonActivity);
+    const newValidator = new FormValidator(formElement, setButtonActivity);
     newValidator.enableValidation();
     setValidator(newValidator);
   }
@@ -15,12 +14,20 @@ function RegisterModal(props) {
     validator.toggleButtonState();
   }
 
+  function submit() {
+    props.registerUser(name, email, password);
+  }
+
   const [isButtonActive, setButtonActivity] = useState(false);
   const [validator, setValidator] = useState(null);
   const formRef = useRef();
   useEffect(() => {
     enableValidation();
-  }, [formRef])
+  }, [formRef]);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   return (
     <FormModal
@@ -33,38 +40,57 @@ function RegisterModal(props) {
       openAnotherModal={props.openAnotherModal}
       formRef={formRef}
       isButtonActive={isButtonActive}
+      onSubmit={submit}
     >
-      <label className="modal__label"><p className="modal__label-text">Email</p>
-        <input className="modal__input"
+      <label className="modal__label">
+        <p className="modal__label-text">Email</p>
+        <input
+          className="modal__input"
           type="email"
-          id="email"
+          id="signup-email"
           placeholder="Enter email"
-          onChange={toggleButtonState}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            toggleButtonState();
+          }}
+          value={email}
           required
         />
-        <p className="modal__error" id="email-error"></p>
+        <p className="modal__error" id="signup-email-error"></p>
       </label>
 
-      <label className="modal__label"><p className="modal__label-text">Password</p>
-        <input className="modal__input"
+      <label className="modal__label">
+        <p className="modal__label-text">Password</p>
+        <input
+          className="modal__input"
           type="password"
-          id="password"
+          id="signup-password"
           placeholder="Enter password"
-          onChange={toggleButtonState}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            toggleButtonState();
+          }}
+          value={password}
           required
         />
-        <p className="modal__error" id="password-error"></p>
+        <p className="modal__error" id="signup-password-error"></p>
       </label>
 
-      <label className="modal__label"><p className="modal__label-text">Username</p>
-        <input className="modal__input"
+      <label className="modal__label">
+        <p className="modal__label-text">Username</p>
+        <input
+          className="modal__input"
           type="text"
-          id="username"
+          id="signup-username"
           placeholder="Enter your username"
-          onChange={toggleButtonState}
+          onChange={(e) => {
+            setName(e.target.value);
+            toggleButtonState();
+          }}
+          value={name}
           required
         />
-        <p className="modal__error" id="username-error"></p>
+        <p className="modal__error" id="signup-username-error"></p>
       </label>
     </FormModal>
   );

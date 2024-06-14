@@ -5,16 +5,16 @@ import Search from "../Search/Search";
 function Main(props) {
   return (
     <main className="main">
-      <Search 
-        getNews={props.getNews}
-        isOnMobile={props.isOnMobile}
-      />
+      <Search getNews={props.getNews} isOnMobile={props.isOnMobile} />
       <News
         news={props.news}
         isSearching={props.isSearching}
         isLoggedIn={props.isLoggedIn}
         handleSave={props.handleSave}
+        handleDelete={props.handleDelete}
         handleArticleClick={props.handleArticleClick}
+        savedArticles={props.savedArticles}
+        openLoginModal={props.openLoginModal}
       />
       <Author />
     </main>

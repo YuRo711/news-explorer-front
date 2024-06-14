@@ -5,132 +5,259 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 import { useEffect, useState } from "react";
 import Saved from "../Saved/Saved";
-import { api } from "../../utils/newsApi.js";
+import { api } from "../../utils/NewsApi.js";
 import RegisterModal from "../Modals/RegisterModal/RegisterModal.js";
 import SuccessModal from "../Modals/SuccessModal/SuccessModal.js";
 import LoginModal from "../Modals/LoginModal/LoginModal.js";
+import { userApi } from "../../utils/MainApi.js";
+import { getToken, removeToken, setToken } from "../../utils/token.js";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 
 function App(props) {
   //#region Methods
 
-  function getNews(query) {
+  function getNews(e, query) {
+    e.preventDefault();
+
     if (query) {
+      setKeyword(query);
       setIsSearching(true);
       api.getNews(query)
-        .then((json) => {
-          setNews(json["articles"]);
+        .then((newJson) => {
+          setNews(newJson["articles"]);
           setIsSearching(false);
-        });
+        })
+        .catch((err) => console.log(err));
     }
   }
 
-  function handleSave(event, cardData) {
-    event.stopPropagation();
-    // no saving is implemented yet, as there is no database to store the saved articles in
+  async function getSavedArticles() {
+    if (!isLoggedIn) {
+      setArticles(null);
+      return;
+    }
+
+    return userApi
+      .getArticles()
+      .then((res) => {
+        const json = res.data.map((data) => {
+          const newData = {
+            _id: data._id,
+            keyword:
+              data.keyword.charAt(0).toUpperCase() + data.keyword.slice(1),
+            title: data.title,
+            description: data.text,
+            publishedAt: data.date,
+            author: data.source,
+            url: data.link,
+            urlToImage: data.image,
+          };
+          return newData;
+        });
+        return json;
+      })
+      .then((json) => {
+        setArticles(json);
+        return json;
+      })
+      .catch((err) => console.log(err));
   }
 
-  function handleDelete(event, cardData) {
+  async function handleSave(cardData) {
+    const data = {
+      keyword,
+      title: cardData.title,
+      text: cardData.description || "[Empty]",
+      date: cardData.publishedAt,
+      source: cardData.author || "Unknown",
+      link: cardData.url,
+      image: cardData.urlToImage,
+    };
+    return userApi.saveArticle(data)
+      .then(getSavedArticles)
+      .catch((err) => console.log(err));
+  }
+
+  async function handleDelete(event, cardData) {
     event.stopPropagation();
+    userApi.deleteArticle(cardData._id)
+      .then(() => {
+        setArticles(articles.filter((data) => data._id !== cardData._id));
+      })
+      .catch((err) => console.log(err));
   }
 
   function handleArticleClick(url) {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, "_blank", "noopener,noreferrer");
   }
 
   function handleModalClose(modalId) {
-    setModalsActivity({...modalsActivity, [modalId]: false});
+    setModalsActivity({ ...modalsActivity, [modalId]: false });
   }
 
   function handleModalOpen(modalId) {
-    setModalsActivity({...modalsActivity, [modalId]: true});
+    setModalsActivity({ ...modalsActivity, [modalId]: true });
   }
 
   function openAnotherModal(modalId, newModalId) {
-    setModalsActivity({...modalsActivity, 
-      [modalId]: false, [newModalId]: true});
+    setModalsActivity({
+      ...modalsActivity,
+      [modalId]: false,
+      [newModalId]: true,
+    });
+  }
+
+  async function registerUser(name, email, password) {
+    return userApi.addUser({ name, email, password })
+      .then((res) => {
+        setToken(res.token);
+        auth(res.token);
+        handleModalClose("signup");
+      })
+      .catch((err) => console.log(err));
+  }
+
+  async function signIn(email, password) {
+    return userApi
+      .signIn({ email, password })
+      .then((res) => {
+        setToken(res.token);
+        auth(res.token);
+        handleModalClose("login");
+      })
+      .then(() => {
+        if (keyword) {
+          getNews(keyword);
+          getSavedArticles();
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function logOut() {
+    removeToken();
+    setIsLoggedIn(false);
+    setArticles(null);
+  }
+
+  function auth(token) {
+    userApi
+      .auth(token)
+      .then((res) => {
+        userApi.setTokenHeader(token);
+        setCurrentUser(res.data);
+        setIsLoggedIn(true);
+        getSavedArticles();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function checkMobile() {
+    setIsOnMobile(window.innerWidth < 600);
   }
 
   //#endregion
 
-  
   //#region Variables setup
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [news, setNews] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
   const [modalsActivity, setModalsActivity] = useState({
-    "signup": false,
-    "login": false,
-    "success": false,
+    signup: false,
+    login: false,
+    success: false,
   });
-
+  const [currentUser, setCurrentUser] = useState({});
+  const [articles, setArticles] = useState(null);
+  const [keyword, setKeyword] = useState(null);
   const [isOnMobile, setIsOnMobile] = useState(window.innerWidth < 600);
+
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setIsOnMobile(window.innerWidth < 600);
-    });
-    return () => {
-      window.removeEventListener("resize", () => {
-        setIsOnMobile(window.innerWidth < 600);
-      })
-      }
+    const token = getToken();
+    if (token) {
+      auth(token);
+    }
+
+    window.addEventListener("resize", () => checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  //#endregion
+  useEffect(() => {
+    getSavedArticles();
+  }, [currentUser]);
 
+  //#endregion
 
   //#region Rendering
 
   return (
     <div className="page">
-      <Header
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-        openLoginModal={() => handleModalOpen("login")}
-        isOnMobile={isOnMobile}
-      />
-      <Routes>
-        <Route path="/saved" element={
-          <Saved
-            isLoggedIn={isLoggedIn}
-            handleArticleClick={handleArticleClick}
-            handleDelete={handleDelete}
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header
+          isLoggedIn={isLoggedIn}
+          openLoginModal={() => handleModalOpen("login")}
+          isOnMobile={isOnMobile}
+          logOut={logOut}
+        />
+        <Routes>
+          <Route
+            path="/saved"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Saved
+                  isLoggedIn={isLoggedIn}
+                  handleArticleClick={handleArticleClick}
+                  handleDelete={handleDelete}
+                  articles={articles}
+                />
+              </ProtectedRoute>
+            }
           />
-        }/>
-        <Route path="/" element={
-          <Main
-            getNews={getNews}
-            news={news}
-            isSearching={isSearching}
-            isLoggedIn={isLoggedIn}
-            handleSave={handleSave}
-            handleArticleClick={handleArticleClick}
-            isOnMobile={isOnMobile}
+          <Route
+            path="/"
+            element={
+              <Main
+                getNews={getNews}
+                news={news}
+                openLoginModal={() => handleModalOpen("signup")}
+                isSearching={isSearching}
+                isLoggedIn={isLoggedIn}
+                handleSave={handleSave}
+                handleDelete={handleDelete}
+                handleArticleClick={handleArticleClick}
+                isOnMobile={isOnMobile}
+                savedArticles={articles}
+              />
+            }
           />
-        }/>
-        <Route path="*" element={
-          <Navigate to="/" replace/>
-        }/>
-      </Routes>
-      <Footer/>
-      <RegisterModal
-        name="signup"
-        onClose={handleModalClose}
-        isOpen={modalsActivity["signup"]}
-        openAnotherModal={() => openAnotherModal("signup", "login")}
-      />
-      <SuccessModal
-        name="success"
-        onClose={handleModalClose}
-        isOpen={modalsActivity["success"]}
-        openAnotherModal={() => openAnotherModal("success", "login")}
-      />
-      <LoginModal
-        name="login"
-        onClose={handleModalClose}
-        isOpen={modalsActivity["login"]}
-        openAnotherModal={() => openAnotherModal("login", "signup")}
-      />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <Footer />
+        <SuccessModal
+          name="success"
+          onClose={handleModalClose}
+          isOpen={modalsActivity["success"]}
+          openAnotherModal={() => openAnotherModal("success", "login")}
+        />
+        <RegisterModal
+          name="signup"
+          onClose={handleModalClose}
+          isOpen={modalsActivity["signup"]}
+          openAnotherModal={() => openAnotherModal("signup", "login")}
+          registerUser={registerUser}
+        />
+        <LoginModal
+          name="login"
+          onClose={handleModalClose}
+          isOpen={modalsActivity["login"]}
+          openAnotherModal={() => openAnotherModal("login", "signup")}
+          signIn={signIn}
+        />
+      </CurrentUserContext.Provider>
     </div>
   );
 
