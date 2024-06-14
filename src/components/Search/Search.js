@@ -2,12 +2,6 @@ import { useState } from "react";
 import "./Search.css";
 
 function Search(props) {
-  function handleKeyDown(event) {
-    if (event.key === "Enter") {
-      props.getNews(query);
-    }
-  }
-
   const [query, setQuery] = useState("");
   const { isOnMobile } = props
 
@@ -21,32 +15,35 @@ function Search(props) {
         Find the latest news on any topic and save them 
         in your personal account.
       </h3>
-      <div className="search__bar">
-        <input type="text"
-          className="search__input"
-          placeholder="Enter topic"
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => handleKeyDown(e)}
-          value={query}
-        />
+      <form className="search__form" 
+        onSubmit={(e) => props.getNews(e, query)}
+      >
+        <div className="search__bar">
+          <input type="text"
+            className="search__input"
+            placeholder="Enter topic"
+            onChange={(e) => setQuery(e.target.value)}
+            value={query}
+          />
+          {
+          isOnMobile ? "" :
+            <button type="submit" className="search__button"
+              onClick={(e) => props.getNews(e, query)}
+            >
+              Search
+            </button>
+          }
+        </div>
         {
-        isOnMobile ? "" :
-          <button type="button" className="search__button"
-            onClick={() => props.getNews(query)}
+        isOnMobile ?
+          <button type="submit" className="search__button"
+            onClick={(e) => props.getNews(e, query)}
           >
             Search
           </button>
+          : ""
         }
-      </div>
-      {
-      isOnMobile ?
-        <button type="button" className="search__button"
-          onClick={() => props.getNews(query)}
-        >
-          Search
-        </button>
-        : ""
-      }
+      </form>
     </section>
   );
 }

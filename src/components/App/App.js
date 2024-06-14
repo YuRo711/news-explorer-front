@@ -17,7 +17,9 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 function App(props) {
   //#region Methods
 
-  function getNews(query) {
+  function getNews(e, query) {
+    e.preventDefault();
+
     if (query) {
       setKeyword(query);
       setIsSearching(true);
