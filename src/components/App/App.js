@@ -23,10 +23,12 @@ function App(props) {
     if (query) {
       setKeyword(query);
       setIsSearching(true);
-      api.getNews(query).then((newJson) => {
-        setNews(newJson["articles"]);
-        setIsSearching(false);
-      });
+      api.getNews(query)
+        .then((newJson) => {
+          setNews(newJson["articles"]);
+          setIsSearching(false);
+        })
+        .catch((err) => console.log(err));
     }
   }
 
@@ -58,7 +60,8 @@ function App(props) {
       .then((json) => {
         setArticles(json);
         return json;
-      });
+      })
+      .catch((err) => console.log(err));
   }
 
   async function handleSave(cardData) {
@@ -71,14 +74,18 @@ function App(props) {
       link: cardData.url,
       image: cardData.urlToImage,
     };
-    return userApi.saveArticle(data).then(getSavedArticles);
+    return userApi.saveArticle(data)
+      .then(getSavedArticles)
+      .catch((err) => console.log(err));
   }
 
   async function handleDelete(event, cardData) {
     event.stopPropagation();
-    userApi.deleteArticle(cardData._id).then(() => {
-      setArticles(articles.filter((data) => data._id !== cardData._id));
-    });
+    userApi.deleteArticle(cardData._id)
+      .then(() => {
+        setArticles(articles.filter((data) => data._id !== cardData._id));
+      })
+      .catch((err) => console.log(err));
   }
 
   function handleArticleClick(url) {
@@ -102,11 +109,13 @@ function App(props) {
   }
 
   async function registerUser(name, email, password) {
-    return userApi.addUser({ name, email, password }).then((res) => {
-      setToken(res.token);
-      auth(res.token);
-      handleModalClose("signup");
-    });
+    return userApi.addUser({ name, email, password })
+      .then((res) => {
+        setToken(res.token);
+        auth(res.token);
+        handleModalClose("signup");
+      })
+      .catch((err) => console.log(err));
   }
 
   async function signIn(email, password) {
@@ -122,7 +131,8 @@ function App(props) {
           getNews(keyword);
           getSavedArticles();
         }
-      });
+      })
+      .catch((err) => console.log(err));
   }
 
   function logOut() {

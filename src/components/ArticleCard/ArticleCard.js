@@ -43,14 +43,18 @@ function ArticleCard(props) {
     }
 
     if (!isSaved) {
-      props.handleSave(data).then((saved) => {
-        setSaved(true);
-        setSavedData(saved.find((article) => article.url === data.url));
-      });
+      props.handleSave(data)
+        .then((saved) => {
+          setSaved(true);
+          setSavedData(saved.find((article) => article.url === data.url));
+        })
+        .catch((err) => console.log(err));
     } else {
-      props.handleDelete(e, savedData).then(() => {
-        setSaved(false);
-      });
+      props.handleDelete(e, savedData)
+        .then(() => {
+          setSaved(false);
+        })
+        .catch((err) => console.log(err));
     }
   }
 
