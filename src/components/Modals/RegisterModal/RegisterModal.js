@@ -53,6 +53,7 @@ function RegisterModal(props) {
             setEmail(e.target.value);
             toggleButtonState();
           }}
+          value={email}
           required
         />
         <p className="modal__error" id="signup-email-error"></p>
@@ -67,6 +68,7 @@ function RegisterModal(props) {
             setPassword(e.target.value);
             toggleButtonState();
           }}
+          value={password}
           required
         />
         <p className="modal__error" id="signup-password-error"></p>
@@ -81,6 +83,7 @@ function RegisterModal(props) {
             setName(e.target.value);
             toggleButtonState();
           }}
+          value={name}
           required
         />
         <p className="modal__error" id="signup-username-error"></p>

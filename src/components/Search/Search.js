@@ -27,6 +27,7 @@ function Search(props) {
           placeholder="Enter topic"
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => handleKeyDown(e)}
+          value={query}
         />
         {
         isOnMobile ? "" :

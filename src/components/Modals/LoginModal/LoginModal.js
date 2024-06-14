@@ -52,6 +52,7 @@ function LoginModal(props) {
             setEmail(e.target.value);
             toggleButtonState();
           }}
+          value={email}
           required
         />
         <p className="modal__error" id="login-email-error"></p>
@@ -66,6 +67,7 @@ function LoginModal(props) {
             setPassword(e.target.value);
             toggleButtonState();
           }}
+          value={password}
           required
         />
         <p className="modal__error" id="login-password-error"></p>
